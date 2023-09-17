@@ -1,0 +1,62 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Diagnostic] (Table)
+       [dbo].[Doctor] (Table)
+       [dbo].[Nurse] (Table)
+       [dbo].[Patient] (Table)
+       [dbo].[RetinopathyResult] (Table)
+       [dbo].[Role] (Table)
+       [dbo].[RoleClaim] (Table)
+       [dbo].[RoleUser] (Table)
+       [dbo].[User] (Table)
+       [dbo].[UserClaim] (Table)
+       Default Constraint: unnamed constraint on [dbo].[Diagnostic] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Diagnostic] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Diagnostic] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Doctor] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Doctor] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Doctor] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Nurse] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Nurse] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Nurse] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Patient] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Patient] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Patient] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RetinopathyResult] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RetinopathyResult] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RetinopathyResult] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Role] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Role] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Role] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RoleClaim] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RoleClaim] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RoleClaim] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RoleUser] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RoleUser] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RoleUser] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[User] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[User] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[User] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[UserClaim] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[UserClaim] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[UserClaim] (Default Constraint)
+       [dbo].[FK_PatientDiagnostic_Patient_PatientId] (Foreign Key)
+       [dbo].[FK_Diagnostic_Retinopathy_Id] (Foreign Key)
+       [dbo].[FK_NurseDiagnostic_Diagnostic_NurseId] (Foreign Key)
+       [dbo].[FK_DoctorDiagnostic_Diagnostic_DoctorId] (Foreign Key)
+       [dbo].[FK_RoleClaim_Role_RoleId] (Foreign Key)
+       [dbo].[FK_RoleUser_User_UserId] (Foreign Key)
+       [dbo].[FK_RoleUser_Role_RoleId] (Foreign Key)
+       [dbo].[FK_UserClaim_User_UserId] (Foreign Key)
+
+** Supporting actions

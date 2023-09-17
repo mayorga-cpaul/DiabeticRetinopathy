@@ -1,0 +1,56 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       [dbo].[Patient]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[Patient].[Phone] on table [dbo].[Patient] must be added, but the column has no default value and does
+         not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either:
+         add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a
+         deployment option.
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[Patient] (Default Constraint)
+       unnamed constraint on [dbo].[Patient] (Default Constraint)
+       unnamed constraint on [dbo].[Patient] (Default Constraint)
+       unnamed constraint on [dbo].[Diagnostic] (Default Constraint)
+       unnamed constraint on [dbo].[RetinopathyResult] (Default Constraint)
+       unnamed constraint on [dbo].[Role] (Default Constraint)
+       unnamed constraint on [dbo].[RoleClaim] (Default Constraint)
+       unnamed constraint on [dbo].[RoleUser] (Default Constraint)
+       unnamed constraint on [dbo].[User] (Default Constraint)
+       unnamed constraint on [dbo].[UserClaim] (Default Constraint)
+       [dbo].[FK_DiagnosticResultDiagnostic_Diagnostic_DiagId] (Foreign Key)
+     Recreate table
+       [dbo].[Patient] (Table)
+     Create
+       [dbo].[Doctor] (Table)
+       [dbo].[Nurse] (Table)
+       Default Constraint: unnamed constraint on [dbo].[Diagnostic] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RetinopathyResult] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Role] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RoleClaim] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[RoleUser] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[User] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[UserClaim] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Doctor] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Doctor] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Doctor] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Nurse] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Nurse] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Nurse] (Default Constraint)
+       [dbo].[FK_Diagnostic_Retinopathy_Id] (Foreign Key)
+       [dbo].[FK_DoctorDiagnostic_Diagnostic_DoctorId] (Foreign Key)
+       [dbo].[FK_NurseDiagnostic_Diagnostic_NurseId] (Foreign Key)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_PatientDiagnostic_Patient_PatientId] (Foreign Key)
+     Create
+       [dbo].[FK_PatientDiagnostic_Patient_PatientId] (Foreign Key)
+
+The column [dbo].[Patient].[Phone] on table [dbo].[Patient] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+
