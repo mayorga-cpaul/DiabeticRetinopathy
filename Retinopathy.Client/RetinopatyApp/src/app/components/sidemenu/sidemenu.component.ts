@@ -9,12 +9,9 @@ import { MenuController } from '@ionic/angular';
 })
 export class SidemenuComponent implements OnInit {
   public appPages = [
+    { title: 'Inicio', url: 'home', icon: 'home' },
     { title: 'Perfil', url: 'app/profile', icon: 'person' },
-    { title: 'Categorias', url: 'app/categories', icon: 'pricetags' },
-    { title: 'Productos', url: 'app/home', icon: 'bag-handle' },
-    { title: 'Facturacion', url: 'app/facturation', icon: 'receipt' },
-    { title: 'Admin Factura', url: 'app/admin-facturation', icon: 'archive' },
-    { title: 'Reportes', url: 'app/reports', icon: 'bar-chart' }
+   
   ];
   constructor(private router: Router,
     private menuController: MenuController) {
