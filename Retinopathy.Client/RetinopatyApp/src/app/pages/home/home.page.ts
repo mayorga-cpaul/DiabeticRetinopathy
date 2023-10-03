@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, inject } from '@angular/core';
-import { AlertController, IonInput, ModalController, NavController } from '@ionic/angular';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AlertController, ModalController } from '@ionic/angular';
 import { DoctorPage } from '../doctor/doctor.page';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 
 @Component({

@@ -14,7 +14,7 @@ import { IonicModule } from '@ionic/angular';
     IonicModule
   ],
   exports:[
-    HeaderPageComponent
+    HeaderPageComponent,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

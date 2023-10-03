@@ -5,7 +5,7 @@ const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'ControlDoctors',
     pathMatch: 'full'
   },
   {
@@ -29,9 +29,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/results/results.module').then( m => m.ResultsPageModule)
   },
   {
-    path: 'doctor',
-    loadChildren: () => import('./pages/doctor/doctor.module').then( m => m.DoctorPageModule)
+    path: 'ControlDoctors',
+    loadChildren: () => import('./pages/admin-doctors/admin-doctors.module').then( m => m.AdminDoctorsPageModule)
   },
+  {
+    path: 'doctor',
+    loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorPageModule)
+  }
+
 ];
 
 @NgModule({

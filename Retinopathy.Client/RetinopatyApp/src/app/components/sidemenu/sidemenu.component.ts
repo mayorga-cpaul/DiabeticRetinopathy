@@ -11,6 +11,7 @@ export class SidemenuComponent implements OnInit {
   public appPages = [
     { title: 'Inicio', url: 'home', icon: 'home' },
     { title: 'Perfil', url: 'app/profile', icon: 'person' },
+    { title: 'Management Doctors', url: 'ControlDoctors', icon: 'list'}
    
   ];
   constructor(private router: Router,
