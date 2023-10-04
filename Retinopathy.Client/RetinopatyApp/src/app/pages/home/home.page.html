@@ -39,9 +39,9 @@
       <ion-grid fixed>
         <ion-row>
           <form [formGroup]="FormPacient">
-            <ion-col size="12" size-md="6" size-lg="8">
+            <ion-col size="12">
               <ion-row>
-                <ion-col size="12" size-md="6">
+                <ion-col size="12">
                   <ion-item lines="full" fill="solid">
                     <ion-label position="floating">Cedula de identidad</ion-label>
                     <ion-input type="text" formControlName="dni" maxlength="15"></ion-input>
@@ -76,14 +76,15 @@
               </ion-row>
             </ion-col>
           </form>
-          <div>
-            <button mat-button matStepperPrevious>Atras</button>
-            <button mat-button [disabled]="!FormPacient.valid || AviableStep == true" matStepperNext>
-              Siguiente
-            </button>
-          </div>
+          
         </ion-row>
       </ion-grid>
+      <div>
+        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button [disabled]="!FormPacient.valid || AviableStep == true" matStepperNext>
+          Siguiente
+        </button>
+      </div>
     </mat-step>
     <mat-step label="Asignacion">
       <p>Asignar doctor</p>
@@ -106,9 +107,9 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button (click)="processData()" expand="block" fill="clear" shape="round">
-        Click me
-      </ion-button>
+      <ng-container *ngIf="doctor != ''">
+        <app-widget-done (click)="IsDone()"></app-widget-done>   
+      </ng-container>
     </mat-step>
   </mat-stepper>
 </ion-content>

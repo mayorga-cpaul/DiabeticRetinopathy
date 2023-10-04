@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, inject } from '@angular/core';
-import { AlertController, IonInput, ModalController, NavController } from '@ionic/angular';
+import { AfterViewInit, Component, ElementRef, OnInit,  ViewChild,} from '@angular/core';
+import { AlertController, ModalController} from '@ionic/angular';
 import { DoctorPage } from '../doctor/doctor.page';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,8 +11,9 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit,AfterViewInit {
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
-  imageSelect: string | ArrayBuffer | null = null;
-  doctor: string = '';
+  @ViewChild('IsDone') buttonDone: ElementRef<any>;
+  public imageSelect: string | ArrayBuffer | null = null;
+  public doctor: string = '';
 
   public IsLoadImage: FormGroup;
   public FormPacient: FormGroup;
@@ -36,7 +36,7 @@ export class HomePage implements OnInit,AfterViewInit {
       name: ['', [Validators.required]]     
     });
 
-    console.log('Estado',this.FormPacient.valid);
+    
     
   }
 
@@ -65,8 +65,7 @@ export class HomePage implements OnInit,AfterViewInit {
     (await modal).onDidDismiss().then((result) => {
       const info = result.data;
       if (info !== undefined) {
-        console.log('Dato pasado desde el modal:', info);
-        this.doctor = info.name
+        this.doctor = info.Name
       }
     });
   }
@@ -95,9 +94,6 @@ export class HomePage implements OnInit,AfterViewInit {
     }
   }
 
-
-  
-
   async showAlert(message: string) {
     const alert = await this.alertController.create({
       header: 'Alerta',
@@ -116,6 +112,10 @@ export class HomePage implements OnInit,AfterViewInit {
   }
   
   public processData(){
+    this.router.navigate(['results'],{replaceUrl:true});
+  }
+
+  public IsDone(){
     this.router.navigate(['results'],{replaceUrl:true});
   }
 }

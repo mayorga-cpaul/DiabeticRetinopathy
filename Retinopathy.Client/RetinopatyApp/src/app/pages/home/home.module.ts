@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 import { MatStepperModule } from '@angular/material/stepper';
 import { HomePageRoutingModule } from './home-routing.module';
 import { MatButtonModule } from '@angular/material/button';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    ComponentsModule
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

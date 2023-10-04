@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
@@ -8,6 +8,10 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./sidemenu.component.scss'],
 })
 export class SidemenuComponent implements OnInit {
+  @Input() title: string = '';
+  @Input() icon: string = '';
+  @Input() url: string = '';
+  
   public appPages = [
     { title: 'Inicio', url: 'home', icon: 'home' },
     { title: 'Perfil', url: 'app/profile', icon: 'person' },

@@ -7,28 +7,24 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./doctor.page.scss'],
 })
 export class DoctorPage implements OnInit {
-  listaItems: string[] = ['Platillos','Bebidas','Postres'];
+
   public itemNew: string = '';
+
   listDoctors = [
-    {Name:'',Job:'', Img:'' }
+    {Name:'Doc. Kevin Jair Ortiz',Job:'Muy pro', Img:'https://i.pravatar.cc/300?u=b'},
+    
   ]
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
   }
-  AddItem(){
-    if(this.itemNew.trim() !== ''){
-      this.listaItems.push(this.itemNew);
-      this.itemNew = '';
-    }
-    
-  }
+ 
   dimiss(){
     this.modalController.dismiss();
   }
 
-  public assing(){
-    this.modalController.dismiss({name:'Doc. Kevin Jair Ortiz Galeano'});
+  public assing(doctor: any){
+    this.modalController.dismiss(doctor);
   }
 
 }
