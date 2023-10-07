@@ -1,0 +1,148 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ng-container class="contenedor">
+
+    <ng-container class="datagridview_container">
+
+      <ion-card class="container_datalist">
+
+        <!-- <ion-label
+        (click)="toggleInfiniteScroll()"
+        expand="block">
+        </ion-label>
+
+        <ion-infinite-scroll
+        threshold="100px"
+        (ionInfinite)="loadData($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
+
+        <ion-card-header>
+          <ion-card-title>Lista de doctores</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngFor="let p of doctors_list; let i = index">
+            <ion-item [id]="i">
+              <ion-thumbnail slot="start">
+                <img src="../../../assets/Images/fondoParaCard.jpg" />
+              </ion-thumbnail>
+              <ion-label>{{p.name}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+            
+      <ng-container class="container_Cards" *ngFor="let p of doctors_list; let i = index">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{p.name}}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            Carnet: {{p.carnet}}<br>
+            Speciality: {{p.speciality}}<br>
+            Role: {{p.role}}<br>
+            State: {{p.state}}
+          </ion-card-content>
+        
+          <ion-button fill="clear">Edit</ion-button>
+          <ion-button id="present-alert" fill="clear">Delete</ion-button>
+        </ion-card>
+      </ng-container>
+
+      <ion-alert
+        trigger="present-alert"
+        header="Alert!"
+        [buttons]="alertButtons"
+        (didDismiss)="setResult($event)"
+      ></ion-alert>
+
+    </ng-container>
+
+  </ng-container>
+
+  <ion-fab slot="fixed" vertical="top" horizontal="center">
+    <ion-fab-button id="open-modal" expand="block"> <!--(click)="togglePanel()"-->
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-content class="ion-padding">
+    <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Add a new doctor</ion-title>
+            <ion-buttons slot="end">
+              <ion-button 
+                (click)="confirm()"
+                [strong]="true" 
+                (click)="presentToast('bottom')">
+                  Confirm
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-item fill="solid">
+            <ion-label position="floating">Carnet</ion-label>
+            <ion-input></ion-input>
+            <ion-note slot="helper">Enter a valid Carnet</ion-note>
+            <ion-note slot="error">Invalid Carnet</ion-note>
+          </ion-item>
+          <ion-item fill="solid">
+            <ion-label position="floating">Name</ion-label>
+            <ion-input></ion-input>
+            <ion-note slot="helper">Enter your name</ion-note>
+            <ion-note slot="error">Incorrect</ion-note>
+          </ion-item>
+
+          <ion-list>
+            <ion-item>
+              <ion-label>Speciality</ion-label>
+              <ion-select [interfaceOptions]="customSpecialityOptions" interface="Speciality" placeholder="Speciality">
+                <ion-select-option value="Oftalmología">Oftalmología</ion-select-option>
+                <ion-select-option value="Optometría">Optometría</ion-select-option>
+                <ion-select-option value="Oftalmología Geriátrica">Oftalmología Geriátrica</ion-select-option>
+              </ion-select>
+            </ion-item>
+          
+            <ion-item>
+              <ion-label>Role</ion-label>
+              <ion-select [interfaceOptions]="customRoleOptions" interface="Role" placeholder="Role">
+                <ion-select-option value="Oftalmólogo General">BOftalmólogo Generalrown</ion-select-option>
+                <ion-select-option value="Cirujano">Cirujano</ion-select-option>
+                <ion-select-option value="Retina y Vítreo">Retina y Vítreo</ion-select-option>
+              </ion-select>
+            </ion-item>
+          
+            <ion-item>
+              <ion-label>State</ion-label>
+              <ion-select [interfaceOptions]="customStateOptions" interface="State" placeholder="State">
+                <ion-select-option value="Disponible">Disponible</ion-select-option>
+                <ion-select-option value="No disponible">No disponible</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-content>
+
+</ion-content>

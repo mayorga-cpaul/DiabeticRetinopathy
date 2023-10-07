@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid fixed>
+    <ion-title class="ion-padding-top ion-padding-bottom">Accesos directos</ion-title>
+    <ion-row>
+      <ion-col size="6" size-sm="6" size-md="6" size-lg="3">
+        <app-card-access titleCard="Nuevo Análisis" srcImg="../../../assets/icon/agregar-archivo.png"
+          (click)="onClick('create-analisis')">
+        </app-card-access>
+      </ion-col>
+
+      <ion-col size="6" size-sm="6" size-md="6" size-lg="3">
+        <app-card-access titleCard="Historial medico" srcImg="../../../assets/icon/statistical-analysis.png"
+        (click)="onClick('history-dignostic')">
+      </app-card-access>
+      </ion-col>
+
+      <ion-col size="6" size-sm="6" size-md="6" size-lg="3">
+        <app-card-access titleCard="Perfil" srcImg="../../../assets/icon/enfermera.png"
+          (click)="onClick('home')">
+        </app-card-access>
+      </ion-col>
+
+      <!-- <ion-col size="6" size-sm="6" size-md="6" size-lg="3">
+        <app-card-access titleCard="Nuevo Análisis" srcImg="../../../assets/icons/investigacion.png"
+        (click)="onClick('home')">
+      </app-card-access>
+      </ion-col> -->
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

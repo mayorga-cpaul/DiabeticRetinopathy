@@ -13,8 +13,10 @@ export class SidemenuComponent implements OnInit {
   @Input() url: string = '';
   
   public appPages = [
-    { title: 'Inicio', url: 'home', icon: 'home' },
+    { title: 'Inicio', url: 'dashboard', icon: 'home' },
     { title: 'Perfil', url: 'app/profile', icon: 'person' },
+    { title: 'Historial médico', url:'history-dignostic',icon: 'receipt'},
+    { title: 'Management Doctors', url: 'platform-doctors', icon: 'list'}
    
   ];
   constructor(private router: Router,
