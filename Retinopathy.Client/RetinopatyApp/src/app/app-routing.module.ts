@@ -5,7 +5,7 @@ const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'ControlDoctors',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
@@ -13,30 +13,27 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboarPageModule)
   },
   {
-    path: 'list-results',
-    loadChildren: () => import('./pages/list-results/list-results.module').then( m => m.ListResultsPageModule)
+    path: 'create-analisis',
+    loadChildren: () => import('./pages/create-diagnostic/create-diagnostic.module').then( m => m.CreateDiagnosticPageModule)
   },
   {
-    path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+    path: 'history-dignostic',
+    loadChildren: () => import('./pages/history-dignostic/history-dignostic.module').then( m => m.HistoryDignosticPageModule)
   },
   {
     path: 'results',
     loadChildren: () => import('./pages/results/results.module').then( m => m.ResultsPageModule)
   },
   {
-    path: 'ControlDoctors',
+    path: 'platform-doctors',
     loadChildren: () => import('./pages/admin-doctors/admin-doctors.module').then( m => m.AdminDoctorsPageModule)
   },
-  {
-    path: 'doctor',
-    loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorPageModule)
-  }
-
+ 
+  
 ];
 
 @NgModule({

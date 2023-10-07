@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid *ngIf="screen == 'load-image'">
+    <ion-row class="ion-align-items-center">
+      <ion-col size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+        <div class="header">
+          <h1 class="heading">Nuevo Análisis</h1>
+          <p class="para">Completa la siguiente información</p>
+        </div>
+        <form [formGroup]="IsLoadImage">
+        <ion-card (click)="fileInput.click()">
+          <ion-img
+            [src]="imageSelect ? imageSelect : 'https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png'"></ion-img>
+          <div class="card-overlay">
+            {{ imageSelect ? 'Cambiar imagen' : 'Agregar una imagen' }}
+          </div>    
+            <input type="file" accept="image/*" style="display: none" #fileInput formControlName="image"
+              (change)="processImage($event)" />       
+        </ion-card>
+      </form>
+        <div>
+          <ion-button (click)="step('user')" expand="block" shape="round" [disabled]="!IsLoadImage.valid">
+            Siguiente
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="screen == 'user'">
+    <ion-row class="ion-align-items-center">
+      <ion-col size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+        <div class="header">
+          <h1 class="heading">Informacion del paciente</h1>
+          <p class="para">Completa la siguiente información</p>
+        </div>
+        <form [formGroup]="FormPacient">
+          <ion-list [inset]="true">
+            <ion-item lines="full" fill="solid">
+              <ion-label position="floating">Cedula de identidad</ion-label>
+              <ion-input type="text" formControlName="dni" maxlength="15"></ion-input>
+              <ion-button (click)="thisPacientExist()" slot="end" fill="clear">
+                <ion-icon name="search-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ng-container *ngIf="!this.PacientExist">
+              <ion-col size="12">
+                <ion-item fill="solid">
+                  <ion-label position="floating">Nombre completo</ion-label>
+                  <ion-input type="text" counterFormatter="counterFormatter" maxlength="50" minlength="20"
+                    formControlName="name"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12">
+                <ion-item fill="solid">
+                  <ion-textarea label="Informacion adicional" labelPlacement="floating" rows="6"></ion-textarea>
+                </ion-item>
+              </ion-col>
+            </ng-container>
+            <ng-container *ngIf="ViewInfo">
+              <ion-card>
+                <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="" />
+                <ion-card-header>
+                  <ion-card-title>001-110603-1028G</ion-card-title>
+                  <ion-card-subtitle>Kevin Jair Ortiz Galeano</ion-card-subtitle>
+                </ion-card-header>
+              </ion-card>
+            </ng-container>
+          </ion-list>
+        </form>
+        <div class="button-container">
+          <ion-button (click)="step('load-image')" expand="block" shape="round" slot="start">
+            Atras
+          </ion-button>
+          <ng-container *ngIf="this.FormPacient.valid || this.ViewInfo">
+            <ion-button (click)="step('asing-doctor')" expand="block" shape="round" slot="end">
+            Siguiente
+          </ion-button>
+          </ng-container>  
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="screen == 'asing-doctor'">
+    <ion-row class="ion-align-items-center">
+      <ion-col size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+        <div class="header">
+          <h1 class="heading">Asignar un doctor</h1>
+          <p class="para">Completa la siguiente información</p>
+        </div>
+        <ion-item fill="solid" lines="full">
+          <ion-button (click)="addDoctor()">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+          <ion-input type="text" readonly="true" [value]="doctor" placeholder=" Sin asignar"></ion-input>
+        </ion-item>
+        <ion-card>
+          <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="" />
+          <ion-card-header>
+            <ion-card-title>001-110603-1028G</ion-card-title>
+            <ion-card-subtitle>Kevin Jair Ortiz Galeano</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+        <div class="button-container">
+          <ion-button (click)="step('user')" expand="block" shape="round" slot="start">
+            Atras
+          </ion-button>
+          <ng-container *ngIf="this.doctor != ''">
+            <ion-button (click)="processData()" expand="block" shape="round" slot="end">
+              Finalizar
+            </ion-button>
+          </ng-container>
+          
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

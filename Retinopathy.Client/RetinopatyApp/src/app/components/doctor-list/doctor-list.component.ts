@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-doctor',
-  templateUrl: './doctor.page.html',
-  styleUrls: ['./doctor.page.scss'],
+  selector: 'app-doctor-list',
+  templateUrl: './doctor-list.component.html',
+  styleUrls: ['./doctor-list.component.scss'],
 })
-export class DoctorPage implements OnInit {
+export class DoctorListComponent  implements OnInit {
+
   listaItems: string[] = ['Platillos','Bebidas','Postres'];
   public itemNew: string = '';
   listDoctors = [

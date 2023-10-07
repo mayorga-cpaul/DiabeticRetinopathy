@@ -1,30 +1,32 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { DoctorPage } from '../doctor/doctor.page';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RetinopatyService } from 'src/app/services/retinopaty.service';
+import { DoctorListComponent } from 'src/app/components/doctor-list/doctor-list.component';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: 'create-diagnostic.page.html',
+  styleUrls: ['create-diagnostic.page.scss'],
 })
-export class HomePage implements OnInit,AfterViewInit {
+export class CreateDiagnosticPage implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
-  imageSelect: string | ArrayBuffer | null = null;
-  doctor: string = '';
-
+  public imageSelect: string | ArrayBuffer | null = null;
+  public doctor: string = '';
   public IsLoadImage: FormGroup;
   public FormPacient: FormGroup;
   public PacientExist: boolean = true;
   public ViewInfo: boolean = false;
-  public AviableStep: boolean = false;
+  private file: File;
+  public screen: any = 'load-image';
 
   constructor(
     private router: Router,
     private alertController: AlertController,
     private modalController: ModalController,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private rtService: RetinopatyService) {
 
     this.IsLoadImage = this.formBuilder.group({
       image: [null, Validators.required],
@@ -32,22 +34,21 @@ export class HomePage implements OnInit,AfterViewInit {
 
     this.FormPacient = this.formBuilder.group({
       dni: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(15)]],
-      name: ['', [Validators.required]]     
+      name: ['', [Validators.required]]
     });
 
-    console.log('Estado',this.FormPacient.valid);
-    
+    console.log('Estado', this.FormPacient.valid);
+
   }
 
   ngOnInit(): void {
 
   }
-  ngAfterViewInit(): void {
-      
-  }
+  
   public processImage(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files[0]) {
+      this.file = inputElement.files[0];
       const reader = new FileReader();
       reader.onload = (e) => {
         this.imageSelect = e.target?.result;
@@ -58,7 +59,7 @@ export class HomePage implements OnInit,AfterViewInit {
 
   public async addDoctor() {
     const modal = this.modalController.create({
-      component: DoctorPage,
+      component: DoctorListComponent,
     });
     (await modal).present();
     (await modal).onDidDismiss().then((result) => {
@@ -70,34 +71,28 @@ export class HomePage implements OnInit,AfterViewInit {
     });
   }
 
-  public thisPacientExist(){
-    if(this.FormPacient.get('dni').valid == true){
-      if(this.GetPacient()){
+  public thisPacientExist() {
+    
+    if (this.FormPacient.get('dni').valid == true) {
+      if (this.GetPacient()) {
         this.PacientExist = true;
         this.ViewInfo = true;
-        this.AviableStep = true;
-        console.log(this.AviableStep);
-        
         this.showAlert('El paciente ya existe');
 
-      }else{
+      } else {
         this.showAlert('El paciente no existe');
         this.PacientExist = false;
         this.ViewInfo = false;
-        this.AviableStep = false;
-        console.log(this.AviableStep);
       }
-     
-    }else{
+
+    } else {
       this.showAlert('El numero de cedula no esta completo');
-      
+
     }
   }
 
 
-  
-
-  async showAlert(message: string) {
+  public async showAlert(message: string) {
     const alert = await this.alertController.create({
       header: 'Alerta',
       message: message,
@@ -113,8 +108,24 @@ export class HomePage implements OnInit,AfterViewInit {
     const threshold = 0.5;
     return randomValue > threshold;
   }
+
+  public processData() {
+
+    this.rtService.uploadImage(this.file).subscribe(
+      {
+        next: (response) => {
+          console.log('Archivo enviado con éxito', response);
+        },
+        error: (error) => {
+          console.error('Error al enviar el archivo', error);
+        },
+       
+
+      });
+    //this.router.navigate(['results'],{replaceUrl:true});
+  }
+  public step(event:any){
+    this.screen = event;
   
-  public processData(){
-    this.router.navigate(['results'],{replaceUrl:true});
   }
 }
