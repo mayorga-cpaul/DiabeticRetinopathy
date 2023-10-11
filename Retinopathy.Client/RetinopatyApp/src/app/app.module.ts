@@ -9,15 +9,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 @NgModule({
   declarations: [AppComponent,SidemenuComponent],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     BrowserAnimationsModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, 
