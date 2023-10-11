@@ -10,8 +10,7 @@ import { MenuController } from '@ionic/angular';
 export class SidemenuComponent implements OnInit {
   public appPages = [
     { title: 'Inicio', url: 'home', icon: 'home' },
-    { title: 'Perfil', url: 'app/profile', icon: 'person' },
-    { title: 'Management Doctors', url: 'ControlDoctors', icon: 'list'}
+    { title: 'Perfil', url: 'app/profile', icon: 'person' }
    
   ];
   constructor(private router: Router,

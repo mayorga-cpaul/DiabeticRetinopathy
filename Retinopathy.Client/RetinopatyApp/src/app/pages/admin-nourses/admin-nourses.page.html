@@ -3,18 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Lista de doctores</ion-title>
+    <ion-title>Lista de Enfermeros</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ng-container class="contenedor ion">
     <ng-container class="contenedor">
       
-      <!--Mostrar cards de cada doctor-->
+      <!--Mostrar cards de cada nourse-->
       <div class="container_Cards" *ngFor="let p of array_list; let i = index">
-        <app-card-doctor
+        <app-card-nourse
           idalert = "present-alert"
           urlImg="../../../assets/Images/fondoParaCard.jpg"
           especialidad={{p.speciality}}
@@ -26,7 +25,7 @@
           dni = {{p.dni}}
           fecha = {{p.fecha}}
         >
-        </app-card-doctor>
+        </app-card-nourse>
       </div>
 
       <!--Alerta de eliminar o editar-->
@@ -58,7 +57,7 @@
                 <ion-title>Add a new doctor</ion-title>
                 <ion-buttons slot="end">
                   <ion-button 
-                    (click)="AgregarDoctor()"
+                    (click)="AgregarNourse()"
                     (click)="confirm()"
                     [strong]="true" 
                     (click)="presentToast('bottom')">
@@ -191,5 +190,4 @@
 
     </ion-refresher-content>
   </ion-refresher>
-
 </ion-content>

@@ -1,0 +1,184 @@
+.book {
+    // padding: 45px;
+    // margin-left: 15px;
+    // padding-right: 115px;
+    position: relative;
+    border-radius: 10px;
+    width: 350px;
+    height: 300px;
+    background-color: whitesmoke;
+    -webkit-box-shadow: 1px 1px 12px #000;
+    box-shadow: 1px 1px 12px #000;
+    -webkit-transform: preserve-3d;
+    -ms-transform: preserve-3d;
+    transform: preserve-3d;
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #000;
+  }
+  
+  .cover {
+    top: 0;
+    position: absolute;
+    background-color: lightgray;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform-origin: 0;
+    -ms-transform-origin: 0;
+    transform-origin: 0;
+    -webkit-box-shadow: 1px 1px 12px #000;
+    box-shadow: 1px 1px 12px #000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  
+  .book:hover .cover {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform: rotatey(-85deg);
+    -ms-transform: rotatey(-85deg);
+    transform: rotatey(-85deg);
+  }
+
+.encabezado__card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_img{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    box-shadow: solid 2px #333;
+    overflow: hidden;
+}
+
+.especialidad,
+.nombre{
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.texto__encabezado{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.especialidad{
+    font-size: 15px;
+    margin-bottom: -20px;
+}
+
+.nombre{
+    font-size: 30px;
+}
+
+.contenedor{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cuerpo__card{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+}
+
+.informacion__cuerpo{
+    font-size: px;
+    color: #333;
+    cursor: pointer;
+}
+
+.footer__card{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(168, 38, 255);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px rgb(140, 32, 212);
+  transition-duration: .3s;
+}
+
+.svg {
+  width: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: .3s;
+}
+.svg1{
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  fill: white;
+  transition-duration: .3s;
+}
+
+.Btn:hover {
+  color: transparent;
+}
+
+.Btn:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+  box-shadow: 2px 2px 0px rgb(140, 32, 212);
+}

@@ -3,11 +3,11 @@ import { IonModal, ToastController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components'
 
 @Component({
-  selector: 'app-admin-doctors',
-  templateUrl: './admin-doctors.page.html',
-  styleUrls: ['./admin-doctors.page.scss'],
+  selector: 'app-admin-nourses',
+  templateUrl: './admin-nourses.page.html',
+  styleUrls: ['./admin-nourses.page.scss'],
 })
-export class AdminDoctorsPage implements OnInit {
+export class AdminNoursesPage implements OnInit {
 
   @ViewChild(IonModal) modal: IonModal;
   
@@ -28,8 +28,7 @@ export class AdminDoctorsPage implements OnInit {
 
   public id:string = "present-alert";
 
-  // Array de doctores
-  public doctors: Doctor[];
+  // Array de enfermeros
 
   public array_list = [
     {
@@ -52,8 +51,7 @@ export class AdminDoctorsPage implements OnInit {
   ngOnInit() {
   }
   
-  async AgregarDoctor(){
-    // let doctor: Doctor;
+  async AgregarNourse(){
     let userid = this.userid;
     let name = this.name;
     let lastname = this.lastname;
@@ -83,10 +81,10 @@ export class AdminDoctorsPage implements OnInit {
       console.log(error);
     }
   }
-  EditarDoctor(){
+  EditarNourse(){
 
   }
-  EliminarDoctor(){
+  EliminarNourse(){
     
   }
 
@@ -150,14 +148,4 @@ export class AdminDoctorsPage implements OnInit {
   }
 //#endregion
 
-}
-export class Doctor{
-  public carnet: string = '';
-  public name: string = '';
-  public speciality: string = '';
-  public role: string = '';
-  public state: string = '';
-
-  public Doctor(){
-  }
 }

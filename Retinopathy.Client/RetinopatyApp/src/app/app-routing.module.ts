@@ -5,7 +5,7 @@ const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'ControlDoctors',
+    redirectTo: 'doctor-view',
     pathMatch: 'full'
   },
   {
@@ -35,8 +35,27 @@ const routes: Routes = [
   {
     path: 'doctor',
     loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorPageModule)
+  },
+  {
+    path: 'doctor-view',
+    loadChildren: () => import('./pages/DoctorPages/doctor-view_historial/doctor-view.module').then( m => m.DoctorViewPageModule)
+  },
+  {
+    path: 'admin-nourses',
+    loadChildren: () => import('./pages/admin-nourses/admin-nourses.module').then( m => m.AdminNoursesPageModule)
+  },
+  {
+    path: 'historialAnalisis',
+    loadChildren: () => import('./pages/DoctorPages/doctor-view-historial-analisis/doctor-view-historial-analisis.module').then( m => m.DoctorViewHistorialAnalisisPageModule)
+  },
+  {
+    path: 'detalleDiagnostico',
+    loadChildren: () => import('./pages/DoctorPages/doctot-view-detalle-diagnostico/doctot-view-detalle-diagnostico.module').then( m => m.DoctotViewDetalleDiagnosticoPageModule )
+  },
+  {
+    path: 'historialdiagnostico',
+    loadChildren: () => import('./pages/DoctorPages/doctot-view-historial-diagnostico/doctot-view-historial-diagnostico.module').then( m => m.DoctotViewHistorialDiagnosticoPageModule )
   }
-
 ];
 
 @NgModule({

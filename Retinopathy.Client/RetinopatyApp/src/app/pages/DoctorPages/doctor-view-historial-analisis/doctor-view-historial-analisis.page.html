@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>doctor-view_historialAnalisis</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngFor="let result of results" class="contenedod">
+    <div class="notification">
+      <div class="notiglow"></div>
+      <div class="notiborderglow"></div>
+      <div class="notititle">{{result.enfermedad}}</div>
+      <div class="notibody">
+        {{result.descripcion}}
+        <div class="numeracion_diagnostico">
+          diagnostico #{{result.numeracion}}
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
