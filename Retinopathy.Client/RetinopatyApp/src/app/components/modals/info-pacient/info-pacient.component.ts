@@ -1,19 +1,25 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { ApexOptions } from 'ng-apexcharts'
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { } from 'apexcharts'
-
 @Component({
-  selector: 'app-results',
-  templateUrl: './results.page.html',
-  styleUrls: ['./results.page.scss'],
+  selector: 'app-info-pacient',
+  templateUrl: './info-pacient.component.html',
+  styleUrls: ['./info-pacient.component.scss'],
 })
-export class ResultsPage implements AfterViewInit {
+export class InfoPacientComponent  implements AfterViewInit, OnInit {
+
   public chartOptions = {};
 
-  constructor() {
+  @Input() pacientObject: any = null;
+  constructor(
+    private modalController: ModalController,
+    private router: Router) {
 
   }
-
+ngOnInit(): void {
+ 
+}
   ngAfterViewInit(): void {
 
     this.chartOptions = {
@@ -65,7 +71,11 @@ export class ResultsPage implements AfterViewInit {
     const chart = new ApexCharts(document.querySelector(".chart-area"), this.chartOptions)
     chart.render();
   }
+
+
+  public close(){
+    this.router.navigate(['history-dignostic'],{replaceUrl: true})
+    this.modalController.dismiss();
+    
+  }
 }
-
-
-

@@ -12,15 +12,17 @@ export class RetinopatyService {
     
   }
   uploadImage(imageFile: File): Observable<any> {
+    console.log(imageFile);
+    
     const formData = new FormData();
     formData.append('input', imageFile, 'image.jpeg');
 
     const headers = new HttpHeaders();
     headers.append('accept', 'application/json');
-    headers.append('Content-Type','multipart/form-data')
+    headers.append('Content-Type','multipart/form-data')     
 
-    console.log(formData.getAll('input'));
-    
+console.log(headers);
+
     return this.httpClient.post(`${environment.ENDPOINT_BASE}/process_image/`, formData, { headers });
   }
  

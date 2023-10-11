@@ -4,7 +4,8 @@ import { HeaderPageComponent } from './header-page/header-page.component';
 import { IonicModule } from '@ionic/angular';
 import { CardPacientComponent } from './cards/card-pacient/card-pacient.component';
 import { CardAccessComponent } from './cards/card-access/card-access.component';
-import { DoctorListComponent } from './doctor-list/doctor-list.component';
+import { DoctorListComponent } from './modals/doctor-list/doctor-list.component';
+import { InfoPacientComponent } from './modals/info-pacient/info-pacient.component';
 
 
 
@@ -13,7 +14,8 @@ import { DoctorListComponent } from './doctor-list/doctor-list.component';
     HeaderPageComponent,
     CardPacientComponent,
     CardAccessComponent,
-    DoctorListComponent
+    DoctorListComponent,
+    InfoPacientComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,6 @@ import { DoctorListComponent } from './doctor-list/doctor-list.component';
     HeaderPageComponent,
     CardPacientComponent,
     CardAccessComponent,
-    DoctorListComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

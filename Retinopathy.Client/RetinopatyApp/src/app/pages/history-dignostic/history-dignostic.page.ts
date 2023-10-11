@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { InfoPacientComponent } from 'src/app/components/modals/info-pacient/info-pacient.component';
 
 @Component({
   selector: 'app-history-dignostic',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HistoryDignosticPage implements OnInit {
 
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
   ngOnInit() {
   }
   public data = [
@@ -37,9 +39,14 @@ export class HistoryDignosticPage implements OnInit {
     console.log(this.results);
     
   }
-  public getInfoPacient(pacientId){
-    console.log(pacientId);
+  public async getInfoPacient(pacientId){
+    const modal = await this.modalController.create({
+      component: InfoPacientComponent,
+      componentProps:{
+        pacientObject: {}
+      }
+    });
+    await modal.present()
   }
-
 
 }

@@ -1,5 +1,13 @@
-<app-header-page [titlePage]="'Resultados'"></app-header-page>
-
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="this.close()">
+        <ion-icon slot="icon-only" name="close"> Regresar</ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-margin">Vista de resultados</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
   <ion-grid fixed>
     <ion-row>

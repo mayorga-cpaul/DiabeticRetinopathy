@@ -3,7 +3,8 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RetinopatyService } from 'src/app/services/retinopaty.service';
-import { DoctorListComponent } from 'src/app/components/doctor-list/doctor-list.component';
+import { DoctorListComponent } from 'src/app/components/modals/doctor-list/doctor-list.component';
+import { InfoPacientComponent } from 'src/app/components/modals/info-pacient/info-pacient.component';
 
 @Component({
   selector: 'app-home',
@@ -108,9 +109,8 @@ export class CreateDiagnosticPage implements OnInit {
     return randomValue > threshold;
   }
 
-  public processData() {
-
-    this.rtService.uploadImage(this.file).subscribe(
+  public async processData() {
+    this.rtService.uploadImage(this.file).subscribe(   
       {
         next: (response) => {
           console.log('Archivo enviado con éxito', response);
@@ -118,17 +118,25 @@ export class CreateDiagnosticPage implements OnInit {
         error: (error) => {
           console.error('Error al enviar el archivo', error);
         },
-       
-
+       complete: () =>{
+        
+       }
       });
     //this.router.navigate(['results'],{replaceUrl:true});
+    // await this.viewResults();
   }
   public step(event:any){
     this.screen = event;
   
   }
 
-  public IsDone(){
-    this.router.navigate(['results'],{replaceUrl:true});
+  public async viewResults(){
+    const modal = await this.modalController.create({
+      component: InfoPacientComponent,
+      componentProps:{
+        pacientObject: {}
+      }
+    });
+    await modal.present(); 
   }
 }

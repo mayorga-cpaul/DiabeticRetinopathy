@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
     this.screen = event;
   }
   login(){
-    this.router.navigate(['home'],{replaceUrl:true});// omite las validaciones/ puede cambiarse
+    this.router.navigate(['dashboard'],{replaceUrl:true});// omite las validaciones/ puede cambiarse
 
     var formData: any = new FormData();
     if(this.formData.valid){

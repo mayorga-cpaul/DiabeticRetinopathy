@@ -5,7 +5,7 @@ const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -23,10 +23,6 @@ const routes: Routes = [
   {
     path: 'history-dignostic',
     loadChildren: () => import('./pages/history-dignostic/history-dignostic.module').then( m => m.HistoryDignosticPageModule)
-  },
-  {
-    path: 'results',
-    loadChildren: () => import('./pages/results/results.module').then( m => m.ResultsPageModule)
   },
   {
     path: 'platform-doctors',
