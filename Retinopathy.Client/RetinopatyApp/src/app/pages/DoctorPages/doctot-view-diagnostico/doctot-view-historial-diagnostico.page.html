@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!--elementos de la vista-->
+<ion-content [fullscreen]="true">
+
+  <!--Header-->
+  <header style="display: flex; text-align: center;">
+    <ion-button fill="clear" href="historialAnalisis">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <h2 style="margin-left: 50px;">Diagnostico</h2>
+  </header>
+
+  <!--Los contenedores-->
+  <div class="contenedor">
+    <div class="contendor grafica">
+      <div class="chart-area"></div>
+    </div>
+    <div class="contenedor img">
+      <img style="width: 100px; height: 100px;" src="../../../../assets/Images/fondoParaCard.jpg" class="image">
+    </div>
+    <div class="contenedor textChat">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos facere culpa, ducimus rerum pariatur eius necessitatibus esse nesciunt porro assumenda laudantium eos, quas, quisquam sunt. Assumenda asperiores illum nemo et?
+      </p>
+    </div>
+    <div class="contenedor diagnostico">
+      El diagnostico es vacio
+    </div>
+  </div>
+
+  <!--Boton Editar-->
+  <ion-fab slot="fixed" vertical="top" horizontal="center">
+    <ion-fab-button id="open-modal" expand="block"> <!--(click)="togglePanel()"-->
+      <ion-icon name="pencil-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DoctorViewHistorialAnalisisPage } from '../doctor-view-historial-analisis/doctor-view-historial-analisis.page';
 
 @Component({
   selector: 'app-doctor-view',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doctor-view.page.scss'],
 })
 export class DoctorViewPage implements OnInit {
+
+  component = DoctorViewHistorialAnalisisPage;
 
   constructor() { }
 

@@ -46,15 +46,15 @@ const routes: Routes = [
   },
   {
     path: 'historialAnalisis',
-    loadChildren: () => import('./pages/DoctorPages/doctor-view-historial-analisis/doctor-view-historial-analisis.module').then( m => m.DoctorViewHistorialAnalisisPageModule)
+    loadChildren: () => import('./pages/DoctorPages/doctor-view-historial-analisis/doctor-view-historial-analisis.module').then(m => m.DoctorViewHistorialAnalisisPageModule)
   },
   {
     path: 'detalleDiagnostico',
     loadChildren: () => import('./pages/DoctorPages/doctot-view-detalle-diagnostico/doctot-view-detalle-diagnostico.module').then( m => m.DoctotViewDetalleDiagnosticoPageModule )
   },
   {
-    path: 'historialdiagnostico',
-    loadChildren: () => import('./pages/DoctorPages/doctot-view-historial-diagnostico/doctot-view-historial-diagnostico.module').then( m => m.DoctotViewHistorialDiagnosticoPageModule )
+    path: 'diagnostico',
+    loadChildren: () => import('./pages/DoctorPages/doctot-view-diagnostico/doctot-view-historial-diagnostico.module').then( m => m.DoctotViewHistorialDiagnosticoPageModule )
   }
 ];
 

@@ -1,12 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>doctor-view_historialAnalisis</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngFor="let result of results" class="contenedod">
-    <div class="notification">
+  <!--Header-->
+  <header style="display: flex; text-align: center;">
+    <ion-button fill="clear" href="doctor-view">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <h2 style="margin-left: 50px;">Diagnosticos</h2>
+  </header>
+
+  <!--Cards de analisis-->
+  <div  *ngFor="let result of results" class="contenedor">
+    <div class="notification" href="diagnostico">
       <div class="notiglow"></div>
       <div class="notiborderglow"></div>
       <div class="notititle">{{result.enfermedad}}</div>
@@ -15,6 +26,7 @@
         <div class="numeracion_diagnostico">
           diagnostico #{{result.numeracion}}
         </div>
+        <ion-button href="diagnostico" style="color: white;" fill="clear">Leer mas</ion-button>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
   <!--Search bar-->
   <div class="contenedor_search">
     <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
-
+    <!--Pacient list-->
     <ion-list class="lista">
       <ion-item class="cards" *ngFor="let result of results">
         <div class="card">
@@ -25,7 +25,7 @@
             <span class="info">Tipo de diabetes: {{result.tipoDiabetes}}</span>
               <div class="author">
                 4 days ago
-                <a href="doctor-view_HistorialAnalisis">Ver</a>
+                <a href="historialAnalisis">Ver</a>
               </div>
           </div>
       </div>
