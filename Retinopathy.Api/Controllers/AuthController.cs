@@ -18,13 +18,13 @@ public class AuthController(IAuthService AuthService) : ControllerBase
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
     [ProducesErrorResponseType(typeof(IResponse<CreateUserRequest>))]
-    public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserRequest ViewModel)
+    public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserRequest Request)
     {
-        var Result = await AuthService.CreateUserAsync(ViewModel);
+        var Result = await AuthService.CreateUserAsync(Request);
 
         if (Result is null)
         {
-            return StatusCode(StatusCodes.Status400BadRequest, await ViewModel.ToResponseAsync());
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
         }
         else
         {
@@ -37,13 +37,13 @@ public class AuthController(IAuthService AuthService) : ControllerBase
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
     [ProducesErrorResponseType(typeof(IResponse<CreateRoleRequest>))]
-    public async Task<IActionResult> CreateRoleAsync([FromBody] CreateRoleRequest ViewModel)
+    public async Task<IActionResult> CreateRoleAsync([FromBody] CreateRoleRequest Request)
     {
-        var Result = await AuthService.CreateRoleAsync(ViewModel);
+        var Result = await AuthService.CreateRoleAsync(Request);
 
         if (Result is null)
         {
-            return StatusCode(StatusCodes.Status400BadRequest, await ViewModel.ToResponseAsync());
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
         }
         else
         {
@@ -56,13 +56,13 @@ public class AuthController(IAuthService AuthService) : ControllerBase
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
     [ProducesErrorResponseType(typeof(IResponse<TokenRequest>))]
-    public async Task<IActionResult> TokenAsync([FromBody] TokenRequest ViewModel)
+    public async Task<IActionResult> TokenAsync([FromBody] TokenRequest Request)
     {
-        var Result = await AuthService.TokenRequestAsync(ViewModel);
+        var Result = await AuthService.TokenRequestAsync(Request);
 
         if (Result is null)
         {
-            return StatusCode(StatusCodes.Status400BadRequest, await ViewModel.ToResponseAsync());
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
         }
         else
         {

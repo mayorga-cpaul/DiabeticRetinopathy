@@ -4,8 +4,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using SysCredit.Api.Interfaces;
-using SysCredit.DataTransferObject.Commons;
+using Retinopathy.Api.Interfaces;
+using Retinopathy.DataTransferObject.Commons;
 
 public class TokenService(IConfiguration Configuration) : ITokenService
 {

@@ -6,8 +6,8 @@ using Retinopathy.Api.Extensions;
 using Retinopathy.Api.Helpers;
 using Retinopathy.Api.ViewModels.Auth;
 using Retinopathy.Api.ViewModels.Auth.Roles;
+using Retinopathy.DataTransferObject.Commons;
 using Retinopathy.Model.Auth.Roles;
-using SysCredit.DataTransferObject.Commons;
 using System.Data;
 using System.Security.Claims;
 
