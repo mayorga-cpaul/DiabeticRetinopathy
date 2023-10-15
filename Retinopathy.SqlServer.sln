@@ -5,13 +5,11 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Retinopathy.SqlServer", "Retinopathy.SqlServer\Retinopathy.SqlServer.sqlproj", "{BBBCAB11-059D-4E01-9215-DE73282E799A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retinopathy.Model", "Retinopathy.Model\Retinopathy.Model.csproj", "{81197D39-7173-4319-AC78-A29D55404A20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retinopathy.Model", "Retinopathy.Model\Retinopathy.Model.csproj", "{81197D39-7173-4319-AC78-A29D55404A20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retinopathy.Helpers", "Retinopathy.Helpers\Retinopathy.Helpers.csproj", "{178B64CD-B0D8-43B9-AA41-3204AA7070F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retinopathy.Api", "Retinopathy.Api\Retinopathy.Api.csproj", "{24E89128-D5EA-4808-A9DF-CE7FA2FFD511}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retinopathy.Api", "Retinopathy.Api\Retinopathy.Api.csproj", "{24E89128-D5EA-4808-A9DF-CE7FA2FFD511}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retinopathy.DataTransferObject", "Retinopathy.DataTransferObject\Retinopathy.DataTransferObject.csproj", "{7FAC389E-899C-47D6-9873-180B219C76E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retinopathy.DataTransferObject", "Retinopathy.DataTransferObject\Retinopathy.DataTransferObject.csproj", "{7FAC389E-899C-47D6-9873-180B219C76E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{81197D39-7173-4319-AC78-A29D55404A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81197D39-7173-4319-AC78-A29D55404A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81197D39-7173-4319-AC78-A29D55404A20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{178B64CD-B0D8-43B9-AA41-3204AA7070F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{178B64CD-B0D8-43B9-AA41-3204AA7070F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{178B64CD-B0D8-43B9-AA41-3204AA7070F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{178B64CD-B0D8-43B9-AA41-3204AA7070F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{24E89128-D5EA-4808-A9DF-CE7FA2FFD511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{24E89128-D5EA-4808-A9DF-CE7FA2FFD511}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24E89128-D5EA-4808-A9DF-CE7FA2FFD511}.Release|Any CPU.ActiveCfg = Release|Any CPU

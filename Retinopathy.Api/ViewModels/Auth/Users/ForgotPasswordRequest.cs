@@ -1,0 +1,6 @@
+﻿namespace Retinopathy.Api.ViewModels.Auth.Users;
+
+public class ForgotPasswordRequest : IViewModel
+{
+    public string Email { get; set; } = string.Empty;
+}

@@ -57,18 +57,18 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="StoredProcedures" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\User.sql" />
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\RoleUser.sql" />
-    <Build Include="Tables\Patient.sql" />
-    <Build Include="Tables\RetinopathyResult.sql" />
-    <Build Include="Tables\Diagnostic.sql" />
     <Build Include="Tables\RoleClaim.sql" />
     <Build Include="Tables\UserClaim.sql" />
-    <Build Include="Tables\Nurse.sql" />
-    <Build Include="Tables\Doctor.sql" />
+    <Build Include="Tables\RetinopathyExam.sql" />
+    <Build Include="Tables\RetinaConditionFindings.sql" />
+    <Build Include="Tables\DiagnosisConclusion.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Retinopathy.SqlServer.publish.xml" />

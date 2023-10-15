@@ -1,17 +1,113 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mayor\\source\\repos\\Retinopathy.SqlServer\\Retinopathy.Api\\Retinopathy.Api.csproj": {}
+    "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Api\\Retinopathy.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mayor\\source\\repos\\Retinopathy.SqlServer\\Retinopathy.Api\\Retinopathy.Api.csproj": {
+    "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Api\\Retinopathy.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mayor\\source\\repos\\Retinopathy.SqlServer\\Retinopathy.Api\\Retinopathy.Api.csproj",
+        "projectUniqueName": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Api\\Retinopathy.Api.csproj",
         "projectName": "Retinopathy.Api",
-        "projectPath": "C:\\Users\\mayor\\source\\repos\\Retinopathy.SqlServer\\Retinopathy.Api\\Retinopathy.Api.csproj",
+        "projectPath": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Api\\Retinopathy.Api.csproj",
         "packagesPath": "C:\\Users\\mayor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mayor\\source\\repos\\Retinopathy.SqlServer\\Retinopathy.Api\\obj\\",
+        "outputPath": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mayor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.DataTransferObject\\Retinopathy.DataTransferObject.csproj": {
+                "projectPath": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.DataTransferObject\\Retinopathy.DataTransferObject.csproj"
+              },
+              "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Model\\Retinopathy.Model.csproj": {
+                "projectPath": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Model\\Retinopathy.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.7.1, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "System.Linq.Async": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.DataTransferObject\\Retinopathy.DataTransferObject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.DataTransferObject\\Retinopathy.DataTransferObject.csproj",
+        "projectName": "Retinopathy.DataTransferObject",
+        "projectPath": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.DataTransferObject\\Retinopathy.DataTransferObject.csproj",
+        "packagesPath": "C:\\Users\\mayor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.DataTransferObject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,16 +140,6 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[7.0.10, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.5.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -66,14 +152,71 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Model\\Retinopathy.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Model\\Retinopathy.Model.csproj",
+        "projectName": "Retinopathy.Model",
+        "projectPath": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Model\\Retinopathy.Model.csproj",
+        "packagesPath": "C:\\Users\\mayor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mayor\\Desktop\\DiabeticRetinopathy\\Retinopathy.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mayor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
