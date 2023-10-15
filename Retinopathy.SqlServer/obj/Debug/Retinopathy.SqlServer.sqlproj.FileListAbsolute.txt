@@ -1,6 +1,0 @@
-C:\Users\mayor\source\repos\Retinopathy.SqlServer\Retinopathy.SqlServer\bin\Debug\Retinopathy.SqlServer.dacpac
-C:\Users\mayor\source\repos\Retinopathy.SqlServer\Retinopathy.SqlServer\bin\Debug\Retinopathy.SqlServer.dll
-C:\Users\mayor\source\repos\Retinopathy.SqlServer\Retinopathy.SqlServer\bin\Debug\Retinopathy.SqlServer.pdb
-C:\Users\mayor\source\repos\Retinopathy.SqlServer\Retinopathy.SqlServer\obj\Debug\Retinopathy.SqlServer.sqlproj.AssemblyReference.cache
-C:\Users\mayor\source\repos\Retinopathy.SqlServer\Retinopathy.SqlServer\obj\Debug\Retinopathy.SqlServer.dll
-C:\Users\mayor\source\repos\Retinopathy.SqlServer\Retinopathy.SqlServer\obj\Debug\Retinopathy.SqlServer.pdb
