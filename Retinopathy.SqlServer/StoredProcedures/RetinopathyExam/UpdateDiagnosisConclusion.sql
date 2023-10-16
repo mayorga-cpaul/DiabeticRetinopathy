@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE UpdateDiagnosisConclusion
+﻿CREATE PROCEDURE [dbo].[UpdateDiagnosisConclusion]
 (
   @DoctorId BIGINT,
   @RetinopathyExamId BIGINT,

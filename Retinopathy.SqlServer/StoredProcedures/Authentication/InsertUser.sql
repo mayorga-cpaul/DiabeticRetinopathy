@@ -10,8 +10,6 @@ AS BEGIN
     SET NOCOUNT ON;
     BEGIN TRANSACTION;
 
-    DECLARE @RoleTable TABLE (RoleId BIGINT);
-
     -- Inserta el nuevo usuario en la tabla User
     INSERT INTO [dbo].[User] ([UserName], [Email], [Password], [Phone])
     VALUES (@UserName, @Email, @Password, @Phone);

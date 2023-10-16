@@ -52,7 +52,6 @@ public static class RoleStore
         return await Store.ExecuteStoredProcedureAsync("[dbo].[CheckAndExistDuplicatedRoles]", Parameters) > 0;
     }
 
-
     public static async ValueTask<RoleInfo?> FetchRoleByUserId(this IStore<Role> Store, long UserId)
     {
         return await Store.ExecuteStoredProcedureQueryAsync<RoleInfo>("[dbo].[FetchRoleByUserId]", new { UserId }).SingleOrDefaultAsync();
