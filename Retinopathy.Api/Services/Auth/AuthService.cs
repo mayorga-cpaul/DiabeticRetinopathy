@@ -21,10 +21,10 @@ public class AuthService(IStore Store, ITokenService TokenService) : IAuthServic
     {
         await Request.ValidateRequestAsync
         (
-            "", 
-            "", 
-            "", 
-            "",
+            "A934B22B-7771-4ADA-839F-AA6C436447A6",
+            "Error al crear el rol",
+            "0001",
+            "SERVAUTH001",
             Key(nameof(RoleStore)).Value(RoleStore)
         );
 
@@ -35,10 +35,10 @@ public class AuthService(IStore Store, ITokenService TokenService) : IAuthServic
     {
         await Request.ValidateRequestAsync
         (
-            "", 
-            "", 
-            "", 
-            "",
+            "6BB44CDB-219C-48A0-9B4A-B26C2F2FADF3",
+            "Error al crear el usuario",
+            "0002",
+            "SERVAUTH001",
             Key(nameof(RoleStore)).Value(RoleStore).
             Key(nameof(UserStore)).Value(UserStore)
         );
@@ -60,10 +60,10 @@ public class AuthService(IStore Store, ITokenService TokenService) : IAuthServic
     {
         await Request.ValidateRequestAsync
         (
-            "",
-            "",
-            "",
-            "",
+            "FE3C6486-AC93-4C22-8C59-C0B906146925",
+            "Error al crear generar el token",
+            "0003",
+            "SERVAUTH001",
             Key(nameof(Request)).Value(Request).
             Key(nameof(UserStore)).Value(UserStore)
         );

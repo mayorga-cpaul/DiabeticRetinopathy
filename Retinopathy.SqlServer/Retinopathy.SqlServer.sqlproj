@@ -59,18 +59,43 @@
     <Folder Include="Tables" />
     <Folder Include="StoredProcedures" />
     <Folder Include="Views" />
+    <Folder Include="Types" />
+    <Folder Include="StoredProcedures\Authentication" />
+    <Folder Include="Tables\Authentication" />
+    <Folder Include="StoredProcedures\RetinopathyExam" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\User.sql" />
-    <Build Include="Tables\Role.sql" />
-    <Build Include="Tables\RoleUser.sql" />
-    <Build Include="Tables\RoleClaim.sql" />
-    <Build Include="Tables\UserClaim.sql" />
     <Build Include="Tables\RetinopathyExam.sql" />
     <Build Include="Tables\RetinaConditionFindings.sql" />
     <Build Include="Tables\DiagnosisConclusion.sql" />
+    <Build Include="Views\AssignRequest.sql" />
+    <Build Include="Views\ClaimRequestType.sql" />
+    <Build Include="StoredProcedures\Authentication\InsertUser.sql" />
+    <Build Include="StoredProcedures\Authentication\InsertRole.sql" />
+    <Build Include="StoredProcedures\Authentication\CheckAndExistDuplicatedRoles.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchClaimByUserId.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchLogin.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchRoleByName.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchRoleClaimByUserId.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchUserByEmail.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchUserById.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchUserByName.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchUserByPhone.sql" />
+    <Build Include="Tables\Authentication\UserClaim.sql" />
+    <Build Include="Tables\Authentication\User.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchRoleByUserId.sql" />
+    <Build Include="StoredProcedures\RetinopathyExam\FetchRetinopathyExamByPatientId.sql" />
+    <Build Include="StoredProcedures\RetinopathyExam\InsertRetinopathyExam.sql" />
+    <Build Include="StoredProcedures\RetinopathyExam\UpdateDiagnosisConclusion.sql" />
+    <Build Include="StoredProcedures\RetinopathyExam\FetchDiagnosisConclusionByRetinopathyPatientId.sql" />
+    <Build Include="StoredProcedures\RetinopathyExam\FetchRetinaConditionsByPatientId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Retinopathy.SqlServer.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Authentication\RoleUser.sql" />
+    <Build Include="Tables\Authentication\RoleClaim.sql" />
+    <Build Include="Tables\Authentication\Role.sql" />
   </ItemGroup>
 </Project>
