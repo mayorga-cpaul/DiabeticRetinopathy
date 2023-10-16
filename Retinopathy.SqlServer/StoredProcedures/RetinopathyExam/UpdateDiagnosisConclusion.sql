@@ -14,6 +14,7 @@ BEGIN
     [RiskFactors] = @RiskFactors,
     [DiagnosisAndFindings] = @DiagnosisAndFindings,
     [TreatmentPlan] = @TreatmentPlan,
-    [AdditionalInformation] = @AdditionalInformation
+    [AdditionalInformation] = @AdditionalInformation,
+    [ModifiedDate] = CURRENT_TIMESTAMP
   WHERE [DoctorId] = @DoctorId AND [RetinopathyExamId] = @RetinopathyExamId
 END

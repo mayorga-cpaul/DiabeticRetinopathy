@@ -58,7 +58,6 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="StoredProcedures" />
-    <Folder Include="Views" />
     <Folder Include="Types" />
     <Folder Include="StoredProcedures\Authentication" />
     <Folder Include="Tables\Authentication" />
@@ -68,8 +67,6 @@
     <Build Include="Tables\RetinopathyExam.sql" />
     <Build Include="Tables\RetinaConditionFindings.sql" />
     <Build Include="Tables\DiagnosisConclusion.sql" />
-    <Build Include="Views\AssignRequest.sql" />
-    <Build Include="Views\ClaimRequestType.sql" />
     <Build Include="StoredProcedures\Authentication\InsertUser.sql" />
     <Build Include="StoredProcedures\Authentication\InsertRole.sql" />
     <Build Include="StoredProcedures\Authentication\CheckAndExistDuplicatedRoles.sql" />
@@ -89,9 +86,9 @@
     <Build Include="StoredProcedures\RetinopathyExam\UpdateDiagnosisConclusion.sql" />
     <Build Include="StoredProcedures\RetinopathyExam\FetchDiagnosisConclusionByRetinopathyPatientId.sql" />
     <Build Include="StoredProcedures\RetinopathyExam\FetchRetinaConditionsByPatientId.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Retinopathy.SqlServer.publish.xml" />
+    <Build Include="Types\AssignRequest.sql" />
+    <Build Include="Types\ClaimRequestType.sql" />
+    <Build Include="StoredProcedures\Authentication\FetchUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Authentication\RoleUser.sql" />

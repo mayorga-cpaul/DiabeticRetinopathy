@@ -30,7 +30,7 @@ public static class UserStore
         }
         catch (Exception Ex)
         {
-            EyesCareException EyesCareExceptionEx = Ex.ToEyesCareException();
+            EyesCareException EyesCareExceptionEx = Ex.ToEyesCareException("4E7E202D-57ED-4ED3-A6CE-0BF931A686D8", "0001", "Error al insertar el usuario", "US0001");
 
             try
             {
@@ -38,7 +38,7 @@ public static class UserStore
             }
             catch (Exception ExRollback)
             {
-                throw ExRollback.ToEyesCareException();
+                throw ExRollback.ToEyesCareException("E8EFF346-5CAE-4D54-81B4-EB66EFAB1D18", "0001", "Error al insertar el usuario", "US0001");
             }
 
             throw EyesCareExceptionEx;
@@ -70,8 +70,9 @@ public static class UserStore
         throw new NotImplementedException();
     }
 
-    public static async ValueTask<bool> LoginAsync(this IStore<User> Store, TokenRequest Login)
+    public static async ValueTask<bool> LoginAsync(this IStore<User> Store, TokenRequest? Login)
     {
+        if (Login is null) return false;
         Login.Password = Convert.ToBase64String(Login.Password.ComputeHashSha512());
         return (await Store.ExecuteStoredProcedureQueryAsync<UserInfo>("[dbo].[FetchLogin]", Login).SingleOrDefaultAsync()) is not null;
     }

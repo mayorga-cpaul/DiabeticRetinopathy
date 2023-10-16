@@ -30,7 +30,7 @@ public static class RoleStore
         }
         catch (Exception Ex)
         {
-            EyesCareException EyesCareExceptionEx = Ex.ToEyesCareException();
+            EyesCareException EyesCareExceptionEx = Ex.ToEyesCareException("EA027E84-C336-4A23-B13C-35D8FCCFCB27", "0001", "Error al insertar el rol", "RS0001");
 
             try
             {
@@ -38,7 +38,7 @@ public static class RoleStore
             }
             catch (Exception ExRollback)
             {
-                throw ExRollback.ToEyesCareException();
+                throw ExRollback.ToEyesCareException("693BE04F-75AC-4B8B-9750-2A4807A7FC5E", "0002", "Error al insertar el rol", "RS0001");
             }
 
             throw EyesCareExceptionEx;

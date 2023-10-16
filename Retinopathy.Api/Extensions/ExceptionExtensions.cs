@@ -19,14 +19,18 @@ public static class ExceptionExtensions
         return Ex.GetExceptions().ToDictionary<Exception, string, object?>(Ex => Ex.GetType().Name, Ex => Ex.Message);
     }
 
-    public static EyesCareException ToEyesCareException(this Exception Ex)
+    public static EyesCareException ToEyesCareException(this Exception Ex, 
+        string MethodId, 
+        string ErrorCode, 
+        string ErrorMessage,
+        string ErrorCategory)
     {
         EyesCareException EyesCareException = new(new()
         {
-            MethodId = "",
-            ErrorCode = "",
-            ErrorMessage = "",
-            ErrorCategory = "",
+            MethodId = MethodId,
+            ErrorCode = ErrorCode,
+            ErrorMessage = ErrorMessage,
+            ErrorCategory = ErrorCategory,
             Errors = Ex.ExceptionsToDictionary()
         }, Ex);
 

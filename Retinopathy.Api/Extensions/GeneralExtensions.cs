@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Retinopathy.Api.Stores;
 using Retinopathy.Api.ViewModels;
+using Retinopathy.Model;
 using System.Data;
 using System.Reflection;
 
@@ -15,7 +16,7 @@ public static class GeneralExtensions
     /// </summary>
     /// <param name="object"></param>
     /// <returns></returns>
-    public static IStore AsStore(this object @object) => @object.As<IStore>()!;
+    public static IStore<T> AsStore<T>(this object @object) where T : Entity => @object.As<IStore<T>>()!;
 
     public static DynamicParameters ToDynamicParameters(this IViewModel ViewModel)
     {

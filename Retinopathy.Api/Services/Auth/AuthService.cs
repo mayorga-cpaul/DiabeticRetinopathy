@@ -11,7 +11,9 @@ using Retinopathy.Api.ViewModels.Auth.Users;
 using Retinopathy.Model.Auth.Roles;
 using Retinopathy.Model.Auth.Users;
 using Retinopathy.DataTransferObject.Commons;
+using Retinopathy.Api.Attributes;
 
+[Service<IAuthService>]
 public class AuthService(IStore Store, ITokenService TokenService) : IAuthService
 {
     private readonly IStore<User> UserStore = Store.GetStore<User>();
@@ -56,20 +58,19 @@ public class AuthService(IStore Store, ITokenService TokenService) : IAuthServic
         return await UserStore.FetchUserByIdAsync(UserId);
     }
 
-    public async ValueTask<AuthInfo?> TokenRequestAsync(TokenRequest Request)
+    public async ValueTask<AuthInfo?> TokenRequestAsync(TokenRequest TokenRequest)
     {
-        await Request.ValidateRequestAsync
+        await TokenRequest.ValidateRequestAsync
         (
             "FE3C6486-AC93-4C22-8C59-C0B906146925",
             "Error al crear generar el token",
             "0003",
             "SERVAUTH001",
-            Key(nameof(Request)).Value(Request).
+            Key(nameof(TokenRequest)).Value(TokenRequest).
             Key(nameof(UserStore)).Value(UserStore)
         );
 
-
-        UserInfo? User = await UserStore.FetchUserByEmailAsync(Request.Email);
+        UserInfo? User = await UserStore.FetchUserByEmailAsync(TokenRequest.Email);
 
         var UserClaims = await UserStore.FetchClaimsByUserId(User?.UserId).ToListAsync();
 

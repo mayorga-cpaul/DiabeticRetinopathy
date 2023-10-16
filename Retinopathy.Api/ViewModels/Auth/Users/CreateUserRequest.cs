@@ -1,7 +1,10 @@
 ﻿namespace Retinopathy.Api.ViewModels.Auth.Users;
 
+using Retinopathy.Api.Attributes;
 using Retinopathy.Api.Contracts.Requests;
+using Retinopathy.Api.Validations.Auth.Users;
 
+[Validator<CreateUserValidator>]
 public class CreateUserRequest : IViewModel, IRequestValidator
 {
     public string UserName { get; set; } = string.Empty;

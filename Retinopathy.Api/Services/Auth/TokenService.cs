@@ -4,9 +4,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Retinopathy.Api.Attributes;
 using Retinopathy.Api.Interfaces;
 using Retinopathy.DataTransferObject.Commons;
 
+[Service<ITokenService>]
 public class TokenService(IConfiguration Configuration) : ITokenService
 {
     private readonly IConfiguration Configuration = Configuration;
