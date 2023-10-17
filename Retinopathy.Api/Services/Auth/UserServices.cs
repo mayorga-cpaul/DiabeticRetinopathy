@@ -105,4 +105,9 @@ public class UserServices(IStore Store, ITokenService TokenService) : IUserServi
             Token = Token,
         };
     }
+
+    public IAsyncEnumerable<FetchUsers> FetchUsers()
+    {
+        return UserStore.FetchUsersAsync();
+    }
 }
