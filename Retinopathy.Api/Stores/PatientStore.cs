@@ -5,13 +5,15 @@ using Retinopathy.Api.Exceptions;
 using Retinopathy.Api.Extensions;
 using Retinopathy.Api.Helpers;
 using Retinopathy.Api.ViewModels.Patient;
+using Retinopathy.DataTransferObject.Commons;
+using Retinopathy.DataTransferObject.Fetchs;
 using Retinopathy.Model;
 using Retinopathy.Model.Auth.Roles;
 using System.Data;
 
 public static class PatientStore
 {
-    public static async ValueTask<(EntityId, string)> CreatePatientAsync(this IStore<RetinopathyExam> Store, CreatePatientRequest Request)
+    public static async ValueTask<(EntityId, string)> InsertPatientAsync(this IStore<RetinopathyExam> Store, InsertPatientRequest Request)
     {
         var PasswordToReturn = Request.Password.GenerateRandomPassword();
         Request.Password = Convert.ToBase64String(PasswordToReturn.ComputeHashSha512());
@@ -50,7 +52,7 @@ public static class PatientStore
         }
     }
 
-    public static async ValueTask<EntityId> CreateRetinopathyExamAsync(this IStore<Role> Store, CreateRetinopathyExamRequest Request)
+    public static async ValueTask<EntityId> InsertRetinopathyExamWhenExistPatientAsync(this IStore<RetinopathyExam> Store, InsertRetinopathyExamWhenExistPatientRequest Request)
     {
         DynamicParameters Parameters = Request.ToDynamicParameters();
         Parameters.Add(nameof(RetinopathyExam.RetinopathyExamId), default, DbType.Int64, ParameterDirection.Output);
@@ -90,7 +92,7 @@ public static class PatientStore
         }
     }
 
-    public static async ValueTask UpdateDiagnosisConclusionAsync(this IStore<Role> Store, DiagnosisConclusionUpdateRequest Request)
+    public static async ValueTask UpdateDiagnosisConclusionAsync(this IStore<DiagnosisConclusion> Store, UpdateDiagnosisConclusionRequest Request)
     {
         DynamicParameters Parameters = Request.ToDynamicParameters();
 
@@ -123,5 +125,15 @@ public static class PatientStore
 
             throw EyesCareExceptionEx;
         }
+    }
+
+    public static IAsyncEnumerable<FetchHistoryPatientAssignedToDoctor> FetchHistoryPatientAssignedToDoctorAsync(this IStore<RetinopathyExam> Store, long PatientId, long DoctorId)
+    {
+        return Store.ExecuteStoredProcedureQueryAsync<FetchHistoryPatientAssignedToDoctor> ("[dbo].[FetchHistoryPatientAssignedToDoctor]", new { PatientId, DoctorId });
+    }
+
+    public static IAsyncEnumerable<FetchRetinaConditionsByPatientId> FetchRetinaConditionsByPatientIdAsync(this IStore<RetinaConditionFindings> Store, long PatientId)
+    {
+        return Store.ExecuteStoredProcedureQueryAsync<FetchRetinaConditionsByPatientId>("[dbo].[FetchRetinaConditionsByPatientId]", new { PatientId });
     }
 }
