@@ -9,12 +9,12 @@ using Retinopathy.Api.Interfaces;
 using Retinopathy.Api.ViewModels.Auth.Roles;
 using Retinopathy.Api.ViewModels.Auth.Users;
 
-public class AuthController(IAuthService AuthService) : ControllerBase
+public class AuthController(IUserServices AuthService) : ControllerBase
 {
-    private readonly IAuthService AuthService = AuthService;
+    private readonly IUserServices AuthService = AuthService;
 
     [AllowAnonymous]
-    [HttpPost("/Api/Account/Register")]
+    [HttpPost("register")]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
     [ProducesErrorResponseType(typeof(IResponse<CreateUserRequest>))]
@@ -33,7 +33,7 @@ public class AuthController(IAuthService AuthService) : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpPost("/Api/Account/CreateRole")]
+    [HttpPost("create-role")]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
     [ProducesErrorResponseType(typeof(IResponse<CreateRoleRequest>))]
@@ -52,7 +52,7 @@ public class AuthController(IAuthService AuthService) : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpPost("/Api/Auth/Token")]
+    [HttpPost("token")]
     [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
     [ProducesErrorResponseType(typeof(IResponse<TokenRequest>))]

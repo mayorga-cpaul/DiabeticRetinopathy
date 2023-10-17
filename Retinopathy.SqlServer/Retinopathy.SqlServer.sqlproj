@@ -83,14 +83,13 @@
     <Build Include="StoredProcedures\Authentication\FetchRoleByUserId.sql" />
     <Build Include="StoredProcedures\RetinopathyExam\InsertRetinopathyExamWhenExistPatient.sql" />
     <Build Include="StoredProcedures\RetinopathyExam\UpdateDiagnosisConclusion.sql" />
-    <Build Include="StoredProcedures\RetinopathyExam\FetchDiagnosisConclusionByRetinopathyPatientId.sql" />
     <Build Include="StoredProcedures\RetinopathyExam\FetchRetinaConditionsByPatientId.sql" />
     <Build Include="Types\AssignRequest.sql" />
     <Build Include="Types\ClaimRequestType.sql" />
-    <Build Include="StoredProcedures\Authentication\FetchUsers.sql" />
     <Build Include="StoredProcedures\RetinopathyExam\InsertPatient.sql" />
-    <Build Include="StoredProcedures\RetinopathyExam\FetchDoctors.sql" />
-    <Build Include="StoredProcedures\RetinopathyExam\FetchPatientsByDoctorId.sql" />
+    <Build Include="StoredProcedures\RetinopathyExam\FetchUsers.sql" />
+    <Build Include="StoredProcedures\RetinopathyExam\FetchPatientsAssignedToDoctor.sql" />
+    <Build Include="StoredProcedures\RetinopathyExam\FetchHistoryPatientAssignedToDoctor.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Authentication\RoleUser.sql" />

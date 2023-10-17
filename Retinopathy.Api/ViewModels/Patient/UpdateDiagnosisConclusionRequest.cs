@@ -2,7 +2,7 @@
 
 using Retinopathy.Api.Contracts.Requests;
 
-public class DiagnosisConclusionUpdateRequest : IViewModel, IRequestValidator
+public class UpdateDiagnosisConclusionRequest : IViewModel, IRequestValidator
 {
     public long DoctorId { get; set; }
 

@@ -2,7 +2,7 @@
 
 using Retinopathy.Api.Contracts.Requests;
 
-public class CreateRetinopathyExamRequest : IViewModel, IRequestValidator
+public class InsertRetinopathyExamWhenExistPatientRequest : IViewModel, IRequestValidator
 {
     public long RetinopathyExamId { get; set; }
     

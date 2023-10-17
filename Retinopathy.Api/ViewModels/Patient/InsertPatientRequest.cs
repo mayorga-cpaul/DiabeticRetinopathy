@@ -4,7 +4,7 @@ using Retinopathy.Api.Contracts.Requests;
 using Retinopathy.Api.ViewModels.Auth;
 using Retinopathy.Model.Auth.Users;
 
-public class CreatePatientRequest : IViewModel, IRequestValidator
+public class InsertPatientRequest : IViewModel, IRequestValidator
 {
     public long RetinopathyExamId { get; set; }
 

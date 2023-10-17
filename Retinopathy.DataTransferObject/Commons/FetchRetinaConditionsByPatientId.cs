@@ -1,17 +1,15 @@
 ﻿namespace Retinopathy.DataTransferObject.Commons;
 
-public class DiagnosisInfo
+public class FetchRetinaConditionsByPatientId
 {
-    public long DianosticConclusionId { get; set; }
-
+    public long RetinaConditionFindingsId { get; set; }
+    
     public long PatientId { get; set; }
     
-    public long DoctorId { get; set; }
-
     public long NurseId { get; set; }
-
+    
     public long RetinopathyExamId { get; set; }
-
+    
     public string UserName { get; set; } = string.Empty;
     
     public string Cedula { get; set; } = string.Empty;
@@ -26,13 +24,17 @@ public class DiagnosisInfo
     
     public DateTime CreatedDateExam { get; set; }
     
-    public DateTime CreatedDateDiagnosis { get;set; }
+    public DateTime CreatedDateRetinaConditions { get; set; }
     
-    public string AdditionalInformation { get; set; } = string.Empty;
+    public bool Moderate { get; set; }
     
-    public string DiagnosisAndFindings { get; set; } = string.Empty;
+    public bool Mild { get; set; }
     
-    public string RiskFactors { get; set; } = string.Empty;
-	
-    public string TreatmentPlan { get; set; } = string.Empty;
+    public bool Proliferative { get; set; }
+    
+    public bool NoDiabeticRetinopathy { get; set; }
+    
+    public bool Severe { get; set; }
+    
+    public string AIAnalysis { get; set; } = string.Empty;
 }

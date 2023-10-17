@@ -6,6 +6,8 @@ using Retinopathy.Api.Extensions;
 using Retinopathy.Api.Helpers;
 using Retinopathy.Api.ViewModels.Auth.Users;
 using Retinopathy.DataTransferObject.Commons;
+using Retinopathy.DataTransferObject.Fetchs;
+using Retinopathy.Model.Auth.Roles;
 using Retinopathy.Model.Auth.Users;
 using System.Data;
 using System.Security.Claims;
@@ -81,4 +83,15 @@ public static class UserStore
     {
         return Store.ExecuteStoredProcedureQueryAsync<UserClaim>("[dbo].[FetchClaimByUserId]", new { UserId }).Select(C => new Claim(C.ClaimType, C.ClaimValue));
     }
+
+    public static IAsyncEnumerable<FetchUsers> FetchUsersAsync(this IStore<Role> Store)
+    {
+        return Store.ExecuteStoredProcedureQueryAsync<FetchUsers>("[dbo].[FetchUsers]");
+    }
+
+    public static IAsyncEnumerable<FetchPatientsAssignedToDoctor> FetchPatientsAssignedToDoctorAsync(this IStore<User> Store, long DoctorId)
+    {
+        return Store.ExecuteStoredProcedureQueryAsync<FetchPatientsAssignedToDoctor>("[dbo].[FetchPatientsAssignedToDoctor]", new { DoctorId });
+    }
+
 }

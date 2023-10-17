@@ -12,28 +12,15 @@ using Retinopathy.Model.Auth.Roles;
 using Retinopathy.Model.Auth.Users;
 using Retinopathy.DataTransferObject.Commons;
 using Retinopathy.Api.Attributes;
+using Retinopathy.DataTransferObject.Fetchs;
 
-[Service<IAuthService>]
-public class AuthService(IStore Store, ITokenService TokenService) : IAuthService
+[Service<IUserServices>]
+public class UserServices(IStore Store, ITokenService TokenService) : IUserServices
 {
     private readonly IStore<User> UserStore = Store.GetStore<User>();
     private readonly IStore<Role> RoleStore = Store.GetStore<Role>();
 
-    public async ValueTask<EntityId?> CreateRoleAsync(CreateRoleRequest Request)
-    {
-        await Request.ValidateRequestAsync
-        (
-            "A934B22B-7771-4ADA-839F-AA6C436447A6",
-            "Error al crear el rol",
-            "0001",
-            "SERVAUTH001",
-            Key(nameof(RoleStore)).Value(RoleStore)
-        );
-
-        return await RoleStore.CreateRoleAsync(Request);
-    }
-
-    public async ValueTask<UserInfo?> CreateUserAsync(CreateUserRequest Request)
+    public async Task<UserInfo?> CreateUserAsync(CreateUserRequest Request)
     {
         await Request.ValidateRequestAsync
         (
@@ -48,17 +35,46 @@ public class AuthService(IStore Store, ITokenService TokenService) : IAuthServic
         return await UserStore.CreateUserAsync(Request);
     }
 
-    public async ValueTask<UserInfo?> FetchUserByEmailAsync(string? Email)
+    public async Task<UserInfo?> FetchUserByEmailAsync(string? Email)
     {
         return await UserStore.FetchUserByEmailAsync(Email);
     }
 
-    public async ValueTask<UserInfo?> FetchUserByIdAsync(long? UserId)
+    public async Task<UserInfo?> FetchUserByIdAsync(long? UserId)
     {
         return await UserStore.FetchUserByIdAsync(UserId);
     }
 
-    public async ValueTask<AuthInfo?> TokenRequestAsync(TokenRequest TokenRequest)
+    public async Task<UserInfo?> FetchUserByUserNameAsync(string? Name)
+    {
+        return await UserStore.FetchUserByUserNameAsync(Name);
+    }
+
+    public async Task<UserInfo?> FetchUserByPhoneAsync(string? Phone)
+    {
+        return await UserStore.FetchUserByPhoneAsync(Phone);
+    }
+
+    public IAsyncEnumerable<FetchPatientsAssignedToDoctor> FetchPatientsAssignedToDoctorAsync(long DoctorId)
+    {
+        return UserStore.FetchPatientsAssignedToDoctorAsync(DoctorId);
+    }
+
+    public async Task<EntityId?> CreateRoleAsync(CreateRoleRequest Request)
+    {
+        await Request.ValidateRequestAsync
+        (
+            "A934B22B-7771-4ADA-839F-AA6C436447A6",
+            "Error al crear el rol",
+            "0001",
+            "SERVAUTH001",
+            Key(nameof(RoleStore)).Value(RoleStore)
+        );
+
+        return await RoleStore.CreateRoleAsync(Request);
+    }
+
+    public async Task<AuthInfo?> TokenRequestAsync(TokenRequest TokenRequest)
     {
         await TokenRequest.ValidateRequestAsync
         (
