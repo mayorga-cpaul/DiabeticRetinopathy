@@ -12,8 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { RoleUserDirective } from './directives/role-user.directive';
 @NgModule({
-  declarations: [AppComponent,SidemenuComponent],
+  declarations: [AppComponent,SidemenuComponent, RoleUserDirective],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),

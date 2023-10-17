@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<ion-grid fixed>
+  <ion-row class="ion-align-items-center ion-justify-content-center">
+    <ion-col size="12" sizeMd="6">
+      <ion-searchbar 
+      animated="true" 
+      placeholder="Paciente" 
+      [debounce]="500" 
+      (ionInput)="handleInput($event)"></ion-searchbar>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      
+    </ion-col>
+  </ion-row>
+</ion-grid>
+  <div class="contenedor_search">
+   
+    <!--Pacient list-->
+    <ion-list class="lista">
+      <ion-item class="cards" *ngFor="let result of results">
+        <div class="card">
+          <div class="card-image">
+            <img [src]="result.img">
+          </div>
+          <div class="category"> {{result.nombre}} </div>
+          <div class="heading">
+            <span class="info">Cedula: {{result.cedula}}</span><br>
+            <span class="info">Genero: {{result.genero}}</span><br>
+            <span class="info">Tipo de diabetes: {{result.tipoDiabetes}}</span>
+              <div class="author">
+                4 days ago
+                <a href="historialAnalisis">Ver</a>
+              </div>
+          </div>
+      </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

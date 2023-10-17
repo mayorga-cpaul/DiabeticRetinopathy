@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,9 @@ export class LoginPage implements OnInit {
   formData: any;
   isLoading: boolean = false;
 
-  constructor(private router:Router, private fb: FormBuilder) { 
+  constructor(private router:Router, private fb: FormBuilder, private authService: AuthService) { 
     this.formData = this.fb.group({
-      name: ['',[Validators.required]],
-      email: ['',[Validators.required, Validators.email]],
+      email: ['',[Validators.required]],
       password: ['',[Validators.required]],
     });
   }
@@ -34,9 +34,11 @@ export class LoginPage implements OnInit {
       formData.append('email', this.formData.get('email').value);
       formData.append('password', this.formData.get('password').value);
       console.log(this.formData)
-      // this.auth.userLogin(formData).subscribe((data:any)=>{
-      //   console.log(data);
-      // });
+      this.authService.setValues({
+        email: this.formData.get('email').value,
+        password:this.formData.get('password').value
+      });
+      
     }  
   }
 }

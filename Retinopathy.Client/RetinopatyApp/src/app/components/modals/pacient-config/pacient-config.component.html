@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="this.close()">
+        <ion-icon slot="icon-only" name="close"> Regresar</ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-margin">Vista de resultados</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true"  color="light">
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <app-card-pacient 
+      [gender]="pacient.sex" 
+      [name]="pacient.name" >
+    </app-card-pacient>
+    <ion-col size="12">
+      <ion-list inset="true">
+        <ion-item>
+          <ion-input type="text" placeholder="Cédula" labelPlacement="floating" label="Cédula"></ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-input type="text" placeholder="Nombre completo" labelPlacement="floating" label="Nombre completo"></ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-input type="text" placeholder="Telefono" labelPlacement="floating" label="Teléfono"></ion-input>
+        </ion-item>       
+      </ion-list>
+      <ion-list inset="true">
+        <ion-item>
+          <ion-textarea rows="6" label="Informacion adicional" labelPlacement="floating"></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

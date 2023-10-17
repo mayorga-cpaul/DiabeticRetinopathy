@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonInfiniteScroll, IonModal, ToastController } from '@ionic/angular';
+import { IonModal, ToastController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components'
 
 @Component({
@@ -10,49 +10,96 @@ import { OverlayEventDetail } from '@ionic/core/components'
 export class AdminDoctorsPage implements OnInit {
 
   @ViewChild(IonModal) modal: IonModal;
-
-  //scroll
-  // @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   
-  // variables
-  public carnet: string = '';
+  
+  //#region variables
+  public userid: string = '';
   public name: string = '';
+  public lastname: string = '';
+  public phone: string = '';
+  public dni: string = '';
+  public email: string = '';
+  public fecha: string = '';
   public speciality: string = '';
   public role: string = '';
   public state: string = '';
 
+  lenght = 0;
+
+  public id:string = "present-alert";
+
   // Array de doctores
-  public doctors_list = [
+  public doctors: Doctor[];
+
+  public array_list = [
     {
-      carnet: 'D1234',
-      name: 'Juancito perez',
-      speciality: 'ophthalmologist',
-      role: 'Supervisor',
-      state: 'Disponible'
-    },
-    {
-      carnet: 'D1235',
-      name: 'Pepito Gutierrez',
-      speciality: 'ophthalmologist',
-      role: 'Asigned',
-      state: 'Disponible'
-    },
-    {
-      carnet: 'D1236',
-      name: 'Gabriela Lopez',
-      speciality: 'ophthalmologist',
-      role: 'Asigned',
-      state: 'No Disponible'
-    },
-    {
-      carnet: 'D1237',
-      name: 'Eliseo Torrez',
-      speciality: 'ophthalmologist',
-      role: 'No asigned',
-      state: 'Disponible'
+      userid: "S1234",
+      name: "Saul",
+      lastname: "Molina",
+      phone: "88496785",
+      dni: "1547895",
+      email: "saulmolina@gmail.com",
+      fecha: "15-09-23",
+      speciality: "Oftalmologia",
+      role: "Oftalmologo General",
+      state: "Disponible"
     }
   ]
+  //#endregion
 
+  constructor( private toastController: ToastController) { }
+
+  ngOnInit() {
+  }
+  
+  async AgregarDoctor(){
+    // let doctor: Doctor;
+    let userid = this.userid;
+    let name = this.name;
+    let lastname = this.lastname;
+    let phone = this.phone;
+    let dni = this.dni;
+    let email = this.email;
+    let fecha = this.fecha;
+    let speciality = this.speciality;
+    let role = this.role;
+    let state = this.state;
+  
+    try {
+      this.array_list.push(
+        {
+          userid,
+          name, 
+          lastname, 
+          phone, 
+          dni, 
+          email, 
+          fecha,
+          speciality, 
+          role, 
+          state
+        })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  EditarDoctor(){
+
+  }
+  EliminarDoctor(){
+    
+  }
+
+  LimpiarCampos(){
+    document.getElementsByClassName("input_carnet").item.arguments.text = '';
+    document.getElementsByClassName("input_name").item.arguments.text = '';
+    document.getElementsByClassName("select").item.arguments.text = '';
+  }
+
+//#region Apartado que no maneja datos
+  setResult(ev) {
+    console.log(`Dismissed with role: ${ev.detail.role}`);
+  }
   // alerta para cuando decida eliminar
   public alertButtons = [
     {
@@ -70,16 +117,23 @@ export class AdminDoctorsPage implements OnInit {
       },
     },
   ];
-
-  setResult(ev) {
-    console.log(`Dismissed with role: ${ev.detail.role}`);
+  // Refrescar la pagina
+  handleRefresh(event) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      event.target.complete();
+    }, 2000);
   }
+   // Para confirmar
+   async presentToast(position: 'top' | 'middle' | 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'Completed',
+      duration: 1500,
+      position: position,
+    });
 
-  constructor( private toastController: ToastController) { }
-
-  ngOnInit() {
+    await toast.present();
   }
-
   // modal para agregar empleado
   cancel() {
     this.modal.dismiss(null, 'cancel');
@@ -94,33 +148,16 @@ export class AdminDoctorsPage implements OnInit {
     if (eve.detail.role === 'confirm') {
     }
   }
+//#endregion
 
-  // Para confirmar
-  async presentToast(position: 'top' | 'middle' | 'bottom') {
-    const toast = await this.toastController.create({
-      message: 'Completed',
-      duration: 1500,
-      position: position,
-    });
+}
+export class Doctor{
+  public carnet: string = '';
+  public name: string = '';
+  public speciality: string = '';
+  public role: string = '';
+  public state: string = '';
 
-    await toast.present();
+  public Doctor(){
   }
-
-  // scroll
-
-  // loadData(event){
-  //   setTimeout(() => {
-  //     console.log('Done');
-  //     event.target.complete();
-
-  //     if(DataTransfer.length == 1000){
-  //       event.target.disabled = true;
-  //     }
-  //   }, 500);
-  // }
-
-  // toggleInfiniteScroll(){
-  //   this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
-  // }
-
 }
