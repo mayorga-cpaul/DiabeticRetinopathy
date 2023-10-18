@@ -1,5 +1,6 @@
 ﻿namespace Retinopathy.Api.Controllers;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Retinopathy.Api.Extensions.ResponsesExtensions;
 using Retinopathy.Api.Interfaces;
@@ -8,34 +9,72 @@ using Retinopathy.Api.ViewModels.Patient;
 public class RetinaController(IRetinaServices RetinaServices) : ControllerBase
 {
     private readonly IRetinaServices RetinaServices = RetinaServices;
+
+    [Authorize]
     [HttpGet("history")]
     public async Task<IActionResult> FetchHistoryPatientAssignedToDoctor([FromQuery] long patientId, [FromQuery] long doctorId)
     {
-        var result = RetinaServices.FetchHistoryPatientAssignedToDoctorAsync(patientId, doctorId);
-        return Ok(await result.ToResponseAsync());
+        var Result = RetinaServices.FetchHistoryPatientAssignedToDoctorAsync(patientId, doctorId);
+        
+        if (Result is null)
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
+        }
+        else
+        {
+            return StatusCode(StatusCodes.Status201Created, Result);
+        }
     }
 
+    [Authorize]
     [HttpGet("conditions")]
     public async Task<IActionResult> FetchRetinaConditionsByPatientId([FromQuery] long patientId)
     {
-        var result = RetinaServices.FetchRetinaConditionsByPatientIdAsync(patientId);
-        return Ok(await result.ToResponseAsync());
+        var Result = RetinaServices.FetchRetinaConditionsByPatientIdAsync(patientId);
+        
+        if (Result is null)
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
+        }
+        else
+        {
+            return StatusCode(StatusCodes.Status201Created, Result);
+        }
     }
 
+    [Authorize]
     [HttpPost("patient")]
     public async Task<IActionResult> InsertPatient([FromBody] InsertPatientRequest request)
     {
-        var result = await RetinaServices.InsertPatientAsync(request);
-        return Ok(result);
+        var (EntityId, Result) = await RetinaServices.InsertPatientAsync(request);
+        
+        if (EntityId is null)
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
+        }
+        else
+        {
+            return StatusCode(StatusCodes.Status201Created, $"{EntityId} {Result}");
+        }
     }
 
+    [Authorize]
     [HttpPost("retinopathy-exam")]
     public async Task<IActionResult> InsertRetinopathyExamWhenExistPatient([FromBody] InsertRetinopathyExamWhenExistPatientRequest request)
     {
-        var result = await RetinaServices.InsertRetinopathyExamWhenExistPatientAsync(request);
-        return Ok(result);
+        var Result = await RetinaServices.InsertRetinopathyExamWhenExistPatientAsync(request);
+
+        if (Result is null)
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
+        }
+        else
+        {
+            return StatusCode(StatusCodes.Status201Created, Result);
+        }
     }
 
+    [Authorize]
     [HttpPut("diagnosis-conclusion")]
     public async Task<IActionResult> UpdateDiagnosisConclusion([FromBody] UpdateDiagnosisConclusionRequest request)
     {

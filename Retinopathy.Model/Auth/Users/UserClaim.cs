@@ -1,6 +1,6 @@
 ﻿namespace Retinopathy.Model.Auth.Users;
 
-public record class UserClaim : Entity
+public class UserClaim 
 {
     public long UserClaimId { get; set; }
 

@@ -4,6 +4,7 @@
     @Email                 NVARCHAR(64),
     @Password              NVARCHAR(MAX),
     @Phone                 NVARCHAR(64),
+    @Cedula                NVARCHAR(64),
     @DoctorId              BIGINT,
     @NurseId               BIGINT,
 	@ImageSource           NVARCHAR(MAX),
@@ -19,8 +20,8 @@ AS BEGIN
   DECLARE @UserId BIGINT;
   
   -- Inserta el nuevo usuario en la tabla User
-  INSERT INTO [dbo].[User] ([UserName], [Email], [Password], [Phone])
-  VALUES (@UserName, @Email, @Password, @Phone);
+  INSERT INTO [dbo].[User] ([UserName], [Email], [Password], [Phone], [Cedula])
+  VALUES (@UserName, @Email, @Password, @Phone, @Cedula);
   
   INSERT INTO [dbo].[RoleUser] ([UserId], [RoleId])
   SELECT @UserId, R.RoleId 

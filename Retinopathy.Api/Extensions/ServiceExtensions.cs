@@ -65,7 +65,7 @@ public static class ServiceExtensions
                     ValidateIssuer = true,
 
                     // Valida la audiencia del token.
-                    ValidateAudience = true,
+                    ValidateAudience = false,
 
                     // Valida la vigencia (lifetime) del token.
                     ValidateLifetime = true,

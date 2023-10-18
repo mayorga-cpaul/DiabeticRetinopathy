@@ -15,6 +15,8 @@ public class InsertPatientRequest : IViewModel, IRequestValidator
     public string Password { get; set; } = string.Empty;
     
     public string Phone { get; set; } = string.Empty;
+
+    public string Cedula { get; set; } = string.Empty;
     
     public long DoctorId { get; set; }
     

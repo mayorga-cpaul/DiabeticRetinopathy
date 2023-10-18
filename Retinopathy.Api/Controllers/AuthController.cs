@@ -2,9 +2,7 @@
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Retinopathy.Api.Contracts.Response;
 using Retinopathy.Api.Extensions.ResponsesExtensions;
-using Retinopathy.Api.Helpers;
 using Retinopathy.Api.Interfaces;
 using Retinopathy.Api.ViewModels.Auth.Roles;
 using Retinopathy.Api.ViewModels.Auth.Users;
@@ -13,11 +11,8 @@ public class AuthController(IUserServices AuthService) : ControllerBase
 {
     private readonly IUserServices AuthService = AuthService;
 
-    [AllowAnonymous]
+    [Authorize]
     [HttpPost("register")]
-    [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
-    [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
-    [ProducesErrorResponseType(typeof(IResponse<CreateUserRequest>))]
     public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserRequest Request)
     {
         var Result = await AuthService.CreateUserAsync(Request);
@@ -32,10 +27,8 @@ public class AuthController(IUserServices AuthService) : ControllerBase
         }
     }
 
-    [AllowAnonymous]
+    [Authorize]
     [HttpPost("create-role")]
-    [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
-    [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
     public async Task<IActionResult> CreateRoleAsync([FromBody] CreateRoleRequest Request)
     {
         var Result = await AuthService.CreateRoleAsync(Request);
@@ -52,8 +45,6 @@ public class AuthController(IUserServices AuthService) : ControllerBase
 
     [AllowAnonymous]
     [HttpPost("token")]
-    [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
-    [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
     public async Task<IActionResult> TokenAsync([FromBody] TokenRequest Request)
     {
         var Result = await AuthService.TokenRequestAsync(Request);
@@ -68,15 +59,53 @@ public class AuthController(IUserServices AuthService) : ControllerBase
         }
     }
 
-    [AllowAnonymous]
+    [Authorize]
     [HttpPost("users")]
-    [ProducesResponseType(typeof(IResponse), StatusCodes.Status500InternalServerError)]
-    [ProducesResponseType(typeof(IResponse<EntityId>), StatusCodes.Status201Created)]
-    [ProducesErrorResponseType(typeof(IResponse<TokenRequest>))]
     public async Task<IActionResult> Users()
     {
-        var result = AuthService.FetchUsers();
-        return Ok(await result.ToResponseAsync());
+        var Result = AuthService.FetchUsers();
+
+        if (Result is null)
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
+        }
+        else
+        {
+            return StatusCode(StatusCodes.Status201Created, Result);
+        }
+    }
+
+
+    [Authorize]
+    [HttpPost("user-by-id")]
+    public async Task<IActionResult> GetUserById(long UserId)
+    {
+        var Result = await AuthService.FetchUserByIdAsync(UserId);
+
+        if (Result is null)
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
+        }
+        else
+        {
+            return StatusCode(StatusCodes.Status201Created, Result);
+        }
+    }
+
+    [Authorize]
+    [HttpPost("user-by-name")]
+    public async Task<IActionResult> GetUserByName(string Name)
+    {
+        var Result = await AuthService.FetchUserByUserNameAsync(Name);
+
+        if (Result is null)
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, await Request.ToResponseAsync());
+        }
+        else
+        {
+            return StatusCode(StatusCodes.Status201Created, Result);
+        }
     }
 }
 
