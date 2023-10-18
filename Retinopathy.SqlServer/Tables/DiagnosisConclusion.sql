@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[DiagnosisConclusion]
 (
-  [DianosticConclusionId] BIGINT IDENTITY(1,1)     NOT NULL PRIMARY KEY,
+  [DianosticConclusionId] BIGINT IDENTITY          NOT NULL PRIMARY KEY,
   [DoctorId]              BIGINT                   NOT NULL,
   [RetinopathyExamId]     BIGINT                   NOT NULL,
   [RiskFactors]           NVARCHAR(MAX) DEFAULT 'Waiting for doctor diagnosis' NOT NULL,

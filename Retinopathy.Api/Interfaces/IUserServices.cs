@@ -23,4 +23,6 @@ public interface IUserServices
     Task<EntityId?> CreateRoleAsync(CreateRoleRequest Request);
 
     Task<AuthInfo?> TokenRequestAsync(TokenRequest TokenRequest);
+
+    IAsyncEnumerable<FetchUsers> FetchUsers();
 }

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[RetinaConditionsFindings]
 (
-  [RetinaConditionFindingsId] INT IDENTITY             NOT NULL PRIMARY KEY,
+  [RetinaConditionFindingsId] BIGINT IDENTITY          NOT NULL PRIMARY KEY,
   [RetinopathyExamId]         BIGINT                   NOT NULL,
   [Mild]                      FLOAT                    NOT NULL,
   [NoDiabeticRetinopathy]     FLOAT                    NOT NULL,

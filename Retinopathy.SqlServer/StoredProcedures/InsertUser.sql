@@ -3,6 +3,7 @@
     @UserName NVARCHAR(64),
     @Email NVARCHAR(64),
     @Password NVARCHAR(MAX),
+    @Cedula NVARCHAR(64),
     @Phone NVARCHAR(64),
     @Roles [dbo].[AssignRequestType] READONLY,
     @UserClaims [dbo].[ClaimRequestType] READONLY
@@ -11,8 +12,8 @@ AS BEGIN
     BEGIN TRANSACTION;
 
     -- Inserta el nuevo usuario en la tabla User
-    INSERT INTO [dbo].[User] ([UserName], [Email], [Password], [Phone])
-    VALUES (@UserName, @Email, @Password, @Phone);
+    INSERT INTO [dbo].[User] ([UserName], [Email], [Password], [Phone], [Cedula])
+    VALUES (@UserName, @Email, @Password, @Phone, @Cedula);
 
     -- Obtiene el ID del nuevo usuario insertado
     SET @UserId = SCOPE_IDENTITY();

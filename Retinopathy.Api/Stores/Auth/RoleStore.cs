@@ -49,7 +49,7 @@ public static class RoleStore
     {
         var Parameters = new DynamicParameters();
         Parameters.Add("RoleNames", Request.ToDataTable(), DbType.Object, ParameterDirection.Input);
-        return await Store.ExecuteStoredProcedureAsync("[dbo].[CheckAndExistDuplicatedRoles]", Parameters) > 0;
+        return await Store.ExecuteStoredProcedureAsync("[dbo].[CheckExistAndDuplicatedRoles]", Parameters) > 0;
     }
 
     public static async ValueTask<RoleInfo?> FetchRoleByUserId(this IStore<Role> Store, long UserId)

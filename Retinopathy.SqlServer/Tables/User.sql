@@ -13,7 +13,6 @@
   [IsDelete]     BIT             NOT NULL DEFAULT 0,
   CONSTRAINT [AK_User_UserName] UNIQUE ([UserName]), 
   CONSTRAINT [AK_User_Email]    UNIQUE ([Email]), 
-  CONSTRAINT [AK_User_Phone]    UNIQUE ([Phone]),
-  CONSTRAINT [AK_User_Cedula]   UNIQUE ([Cedula])
+  CONSTRAINT [AK_User_Phone]    UNIQUE ([Phone])
 )
 GO

@@ -84,7 +84,7 @@ public static class UserStore
         return Store.ExecuteStoredProcedureQueryAsync<UserClaim>("[dbo].[FetchClaimByUserId]", new { UserId }).Select(C => new Claim(C.ClaimType, C.ClaimValue));
     }
 
-    public static IAsyncEnumerable<FetchUsers> FetchUsersAsync(this IStore<Role> Store)
+    public static IAsyncEnumerable<FetchUsers> FetchUsersAsync(this IStore<User> Store)
     {
         return Store.ExecuteStoredProcedureQueryAsync<FetchUsers>("[dbo].[FetchUsers]");
     }

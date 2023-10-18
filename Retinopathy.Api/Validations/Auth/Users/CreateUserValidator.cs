@@ -35,7 +35,6 @@ public class CreateUserValidator : AbstractValidator<CreateUserRequest>
         RuleFor(U => U.Roles)
             .NotEmpty()
             .NotNull()
-            .ExistRoleInRequest()
             .WithName("Roles de usuario");
 
         RuleFor(U => U.UserClaims)
