@@ -50,10 +50,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/doctor-pages/doctor-view-historial-analisis/doctor-view-historial-analisis.module').then(m => m.DoctorViewHistorialAnalisisPageModule)
   },
   {
-    path: 'detalleDiagnostico',
-    loadChildren: () => import('./pages/doctor-pages/doctot-view-detalle-diagnostico/doctot-view-detalle-diagnostico.module').then( m => m.DoctotViewDetalleDiagnosticoPageModule )
-  },
-  {
     path: 'diagnostico',
     loadChildren: () => import('./pages/doctor-pages/doctot-view-diagnostico/doctot-view-historial-diagnostico.module').then( m => m.DoctotViewHistorialDiagnosticoPageModule )
   }

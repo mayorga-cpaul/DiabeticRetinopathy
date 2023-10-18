@@ -18,8 +18,9 @@ export class SidemenuComponent implements OnInit {
     { title: 'Inicio', url: 'dashboard', icon: 'home' },
     { title: 'Perfil', url: 'app/profile', icon: 'person' },
     { title: 'Historial médico', url:'history-dignostic',icon: 'receipt'},
-    { title: 'Management Doctors', url: 'ControlDoctors', icon: 'list'}
-   
+    { title: 'Doctors', url: 'ControlDoctors', icon: 'fitness'},
+    { title: 'Nurses', url: 'admin-nurses', icon: 'medical'},
+    { title: 'Pacients', url: 'doctor-view', icon: 'people'},
   ];
   constructor(private router: Router,
     private menuController: MenuController) {
