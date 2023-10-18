@@ -1,0 +1,7 @@
+{
+  "name": "RetinopatyApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

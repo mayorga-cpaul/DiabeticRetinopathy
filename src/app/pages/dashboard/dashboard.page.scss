@@ -1,0 +1,15 @@
+ion-card:hover {
+    transform: scale(1.05); /* Cambia el tamaño al 105% del tamaño original */
+    transition: transform 0.3s ease; /* Agrega una transición suave */
+    cursor: pointer; /* Cambia el cursor a una mano cuando está sobre la tarjeta */
+  }
+
+  ion-toolbar {
+    --background:#5c6c84 ;
+    ion-title{
+      color:white;
+    }
+    ion-icon{
+      color: white;
+    }
+  }

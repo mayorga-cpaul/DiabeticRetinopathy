@@ -1,0 +1,19 @@
+.contenedor{
+    width: 100%;
+    height: 100%;
+  }
+  
+  ion-fab {
+    position: absolute;
+  }
+  
+  
+  ion-toolbar {
+    --background:#5c6c84 ;
+    ion-title{
+      color:white;
+    }
+    ion-icon{
+      color: white;
+    }
+  }

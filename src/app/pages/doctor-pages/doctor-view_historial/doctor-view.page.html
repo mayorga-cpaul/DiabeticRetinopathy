@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lista de pacientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<ion-grid fixed>
+  <ion-row class="ion-align-items-center ion-justify-content-center">
+    <ion-col size="12" sizeMd="6">
+      <ion-searchbar 
+      animated="true" 
+      placeholder="Paciente" 
+      [debounce]="500" 
+      (ionInput)="handleInput($event)"></ion-searchbar>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      
+    </ion-col>
+  </ion-row>
+</ion-grid>
+   
+<!--Pacient list-->
+<ion-grid fixed>
+  <ion-row class="ion-justify-content-start">
+    <ion-col size="6" sizeMd="2" *ngFor="let result of results; let i = index">
+      <app-pacient-diagnostic-card
+        [nombre]="result.nombre"
+        [cedula]="result.cedula"
+        [genero]="result.genero"
+        [tipoDiabetes]="result.tipoDiabetes"
+        [dias]="result.dias"
+        (click)="IrHistorialDiagnostico()"
+      ></app-pacient-diagnostic-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

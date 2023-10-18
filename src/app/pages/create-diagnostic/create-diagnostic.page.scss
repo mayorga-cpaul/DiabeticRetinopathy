@@ -1,0 +1,73 @@
+
+ion-card:hover {
+  cursor: pointer;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.card-overlay:hover {
+  display: inline;
+}
+
+.header {
+  text-align: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.heading {
+  font-size: 32px;
+  font-weight: bold;
+}
+.para {
+  font-size: 22px;
+  font-weight: 500;
+  color: #a6abb1;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Coloca los botones en los extremos */
+  align-items: center; /* Alinea verticalmente al centro si es necesario */
+}
+
+.custom-card{
+  height: 200px; /* Altura fija deseada */
+}
+.custom-card img {
+  max-width: 128px; /* Establece el ancho máximo en 128 píxeles */
+  max-height: 128px; /* Establece la altura máxima en 128 píxeles */
+  width: auto; /* Para mantener la proporción de aspecto original de la imagen */
+  height: auto; /* Para mantener la proporción de aspecto original de la imagen */
+  filter: grayscale(100%); /* Desaturar la imagen al 100% (blanco y negro) */
+  transition: filter 0.3s ease-in-out; /* Agrega una transición suave para el efecto hover */
+  ;
+}
+
+ion-card:hover{
+  cursor: pointer;
+}
+
+
+
+
+ion-toolbar {
+  --background:#5c6c84 ;
+  ion-title{
+    color:white;
+  }
+  ion-icon{
+    color: white;
+  }
+}
