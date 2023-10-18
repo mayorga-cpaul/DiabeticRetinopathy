@@ -12,9 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { JwtModule } from '@auth0/angular-jwt';
+import { RoleUserDirective } from './directives/role-user.directive';
 @NgModule({
-  declarations: [AppComponent,SidemenuComponent],
+  declarations: [AppComponent,SidemenuComponent, RoleUserDirective],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -22,11 +22,6 @@ import { JwtModule } from '@auth0/angular-jwt';
     BrowserAnimationsModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => localStorage.getItem('AuthUser'), // Debe coincidir con la forma en que obtienes el token
-      },
-    }),
     HttpClientModule,
   ],
   providers: [

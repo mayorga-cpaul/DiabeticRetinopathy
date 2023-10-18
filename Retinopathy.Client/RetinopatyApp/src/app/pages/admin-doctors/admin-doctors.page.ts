@@ -24,12 +24,10 @@ export class AdminDoctorsPage implements OnInit {
   public role: string = '';
   public state: string = '';
 
-  lenght = 0;
 
   public id:string = "present-alert";
 
   // Array de doctores
-  public doctors: Doctor[];
 
   public array_list = [
     {
@@ -43,7 +41,67 @@ export class AdminDoctorsPage implements OnInit {
       speciality: "Oftalmologia",
       role: "Oftalmologo General",
       state: "Disponible"
-    }
+    },
+    {
+      userid: "S1234",
+      name: "Saul",
+      lastname: "Molina",
+      phone: "88496785",
+      dni: "1547895",
+      email: "saulmolina@gmail.com",
+      fecha: "15-09-23",
+      speciality: "Oftalmologia",
+      role: "Oftalmologo General",
+      state: "Disponible"
+    },
+    {
+      userid: "S1234",
+      name: "Saul",
+      lastname: "Molina",
+      phone: "88496785",
+      dni: "1547895",
+      email: "saulmolina@gmail.com",
+      fecha: "15-09-23",
+      speciality: "Oftalmologia",
+      role: "Oftalmologo General",
+      state: "Disponible"
+    },
+    {
+      userid: "S1234",
+      name: "Saul",
+      lastname: "Molina",
+      phone: "88496785",
+      dni: "1547895",
+      email: "saulmolina@gmail.com",
+      fecha: "15-09-23",
+      speciality: "Oftalmologia",
+      role: "Oftalmologo General",
+      state: "Disponible"
+    },
+    {
+      userid: "S1234",
+      name: "Saul",
+      lastname: "Molina",
+      phone: "88496785",
+      dni: "1547895",
+      email: "saulmolina@gmail.com",
+      fecha: "15-09-23",
+      speciality: "Oftalmologia",
+      role: "Oftalmologo General",
+      state: "Disponible"
+    },
+    {
+      userid: "S1234",
+      name: "Saul",
+      lastname: "Molina",
+      phone: "88496785",
+      dni: "1547895",
+      email: "saulmolina@gmail.com",
+      fecha: "15-09-23",
+      speciality: "Oftalmologia",
+      role: "Oftalmologo General",
+      state: "Disponible"
+    },
   ]
   //#endregion
 
@@ -90,11 +148,6 @@ export class AdminDoctorsPage implements OnInit {
     
   }
 
-  LimpiarCampos(){
-    document.getElementsByClassName("input_carnet").item.arguments.text = '';
-    document.getElementsByClassName("input_name").item.arguments.text = '';
-    document.getElementsByClassName("select").item.arguments.text = '';
-  }
 
 //#region Apartado que no maneja datos
   setResult(ev) {
@@ -117,13 +170,6 @@ export class AdminDoctorsPage implements OnInit {
       },
     },
   ];
-  // Refrescar la pagina
-  handleRefresh(event) {
-    setTimeout(() => {
-      // Any calls to load data go here
-      event.target.complete();
-    }, 2000);
-  }
    // Para confirmar
    async presentToast(position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toastController.create({
@@ -150,14 +196,4 @@ export class AdminDoctorsPage implements OnInit {
   }
 //#endregion
 
-}
-export class Doctor{
-  public carnet: string = '';
-  public name: string = '';
-  public speciality: string = '';
-  public role: string = '';
-  public state: string = '';
-
-  public Doctor(){
-  }
 }

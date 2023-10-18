@@ -1,37 +1,26 @@
 import { Injectable } from "@angular/core";
 import { ILocalStorage } from "../Interfaces/ILocalStorage";
+import { UserInfoDTO } from "../models/auth/UserInfo";
 
 @Injectable({
-    providedIn: "platform"
+    providedIn:"platform"
 })
-export class LocalStorageRepository implements ILocalStorage {
+export class LocalStorageRepository implements ILocalStorage  {
 
-    
     constructor() {
-    
+
     }
-   
+
     public saveData<Tmodel>(data: Tmodel, key: string): boolean {
-        if (data !== null && data !== undefined && key !== null && key !== undefined) {
-            try {
-                
-                localStorage.removeItem(key);
-                const jsonSerialize = JSON.stringify(data);
-                localStorage.setItem(key, jsonSerialize);
-                
-                return true;
-            } catch (error) {
-                console.error('Error al guardar los datos:', error);
-                return false;
-            }
+        if (data !== null && data != undefined) {
+            const JsonSerialize = JSON.stringify(data);
+            localStorage.setItem(key, JsonSerialize);
+            return true
         }
         return false;
     }
 
-
     public getData<Tmodel>(key: string): Tmodel {
-
-        
         const localdata = localStorage.getItem(key);
 
         if (localdata !== null && localdata.trim() !== "") {
@@ -53,6 +42,4 @@ export class LocalStorageRepository implements ILocalStorage {
     public removeAllData(): void {
         localStorage.clear();
     }
-
-   
 }

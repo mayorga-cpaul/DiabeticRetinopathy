@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorViewHistorialAnalisisPage } from '../doctor-view-historial-analisis/doctor-view-historial-analisis.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-view',
@@ -10,7 +11,7 @@ export class DoctorViewPage implements OnInit {
 
   component = DoctorViewHistorialAnalisisPage;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,7 +26,8 @@ export class DoctorViewPage implements OnInit {
       tipoDiabetes: "2",
       familiar: "No",
       doctor: "R1234",
-      Img: ""
+      Img: "",
+      dias: "4"
     },
     {
       nombre: "Teresa Garcia",
@@ -36,7 +38,8 @@ export class DoctorViewPage implements OnInit {
       tipoDiabetes: "1",
       familiar: "Si",
       doctor: "R1234",
-      Img: ""
+      Img: "",
+      dias: "4"
     },
     {
       nombre: "Teresa Garcia",
@@ -47,7 +50,8 @@ export class DoctorViewPage implements OnInit {
       tipoDiabetes: "1",
       familiar: "Si",
       doctor: "R1234",
-      Img: ""
+      Img: "",
+      dias: "4"
     },
     {
       nombre: "Maria Mendez",
@@ -58,7 +62,8 @@ export class DoctorViewPage implements OnInit {
       tipoDiabetes: "1",
       familiar: "Si",
       doctor: "R1234",
-      Img: ""
+      Img: "",
+      dias: "4"
     },
     {
       nombre: "Jhon Wick",
@@ -69,7 +74,8 @@ export class DoctorViewPage implements OnInit {
       tipoDiabetes: "1",
       familiar: "No",
       doctor: "R1234",
-      Img: ""
+      Img: "",
+      dias: "4"
     },
     {
       nombre: "Belinda Gates",
@@ -80,7 +86,8 @@ export class DoctorViewPage implements OnInit {
       tipoDiabetes: "1",
       familiar: "Si",
       doctor: "R1234",
-      Img: ""
+      Img: "",
+      dias: "4"
     },
   ];
   public results = [...this.data];
@@ -89,6 +96,10 @@ export class DoctorViewPage implements OnInit {
     const query = event.target.value.toLowerCase();
     this.results = this.data.filter((d) => d.nombre.toLowerCase()
     .indexOf(query) > -1);
+  }
+
+  public IrHistorialDiagnostico(){
+    this.router.navigate(['./historialAnalisis']);
   }
 
 }

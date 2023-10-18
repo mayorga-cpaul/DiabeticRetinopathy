@@ -24,27 +24,21 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-  <div class="contenedor_search">
    
-    <!--Pacient list-->
-    <ion-list class="lista">
-      <ion-item class="cards" *ngFor="let result of results">
-        <div class="card">
-          <div class="card-image">
-            <img [src]="result.Img">
-          </div>
-          <div class="category"> {{result.nombre}} </div>
-          <div class="heading">
-            <span class="info">Cedula: {{result.cedula}}</span><br>
-            <span class="info">Genero: {{result.genero}}</span><br>
-            <span class="info">Tipo de diabetes: {{result.tipoDiabetes}}</span>
-              <div class="author">
-                4 days ago
-                <a href="historialAnalisis">Ver</a>
-              </div>
-          </div>
-      </div>
-      </ion-item>
-    </ion-list>
-  </div>
+<!--Pacient list-->
+<ion-grid fixed>
+  <ion-row class="ion-justify-content-start">
+    <ion-col size="6" sizeMd="2" *ngFor="let result of results; let i = index">
+      <app-pacient-diagnostic-card
+        [nombre]="result.nombre"
+        [cedula]="result.cedula"
+        [genero]="result.genero"
+        [tipoDiabetes]="result.tipoDiabetes"
+        [dias]="result.dias"
+        (click)="IrHistorialDiagnostico()"
+      ></app-pacient-diagnostic-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
 </ion-content>
