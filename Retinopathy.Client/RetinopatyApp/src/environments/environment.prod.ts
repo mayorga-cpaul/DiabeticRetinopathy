@@ -9,5 +9,6 @@ export const environment = {
     messagingSenderId: '846087337823',
   },
   production: true,
-  ENDPOINT_BASE:'http://127.0.0.1:8000/process_image/'
+  ENDPOINT_BASE:'http://127.0.0.1:8000/process_image/',
+  ENDPOIN_BASE_EYESCARE: 'https://eyescare.azurewebsites.net/'
 };

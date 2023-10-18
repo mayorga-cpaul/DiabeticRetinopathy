@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button slot="start" fill="clear" href="doctor-view">
-      <ion-icon name="chevron-back"></ion-icon>
-    </ion-button>
-    <ion-title>Diagnosticos</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!--Header-->
+  <header style="display: flex; text-align: center;">
+    <ion-button fill="clear" href="doctor-view">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
+    <h2 style="margin-left: 50px;">Diagnosticos</h2>
+  </header>
 
   <!--Cards de analisis-->
   <ion-grid fixed>

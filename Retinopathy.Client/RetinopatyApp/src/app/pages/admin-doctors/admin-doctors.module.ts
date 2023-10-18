@@ -1,14 +1,14 @@
-
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
 
 import { AdminDoctorsPageRoutingModule } from './admin-doctors-routing.module';
 
 import { AdminDoctorsPage } from './admin-doctors.page';
-import { ComponentsModule } from 'src/app/components/components.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   declarations: [

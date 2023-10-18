@@ -11,12 +11,9 @@ import { OverlayEventDetail } from '@ionic/core/components'
 })
 export class DoctotViewHistorialDiagnosticoPage implements OnInit {
 
-  @ViewChild(IonModal) modal: IonModal;
-
   public chartOptions = {};
   public pacientInfo: any;
-  
-  constructor(public modalController: ModalController, private toastController: ToastController) { }
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -74,6 +71,7 @@ export class DoctotViewHistorialDiagnosticoPage implements OnInit {
   }
 
   // boton flotante para editar
+  
 
   onWillDismiss(event: Event) {
     const eve = event as CustomEvent<OverlayEventDetail<string>>;
@@ -81,22 +79,6 @@ export class DoctotViewHistorialDiagnosticoPage implements OnInit {
     }
   }
 
-  // Para confirmar
-  async presentToast(position: 'top' | 'middle' | 'bottom') {
-    const toast = await this.toastController.create({
-      message: 'Completed',
-      duration: 1500,
-      position: position,
-    });
+  
 
-    await toast.present();
-  }
-  // modal para agregar empleado
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
-  }
-
-  confirm() {
-    this.modal.dismiss(null, 'confirm');
-  }
 }

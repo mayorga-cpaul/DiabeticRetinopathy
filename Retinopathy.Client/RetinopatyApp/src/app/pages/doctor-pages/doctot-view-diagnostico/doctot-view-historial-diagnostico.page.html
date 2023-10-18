@@ -1,111 +1,45 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button slot="start" fill="clear" (click)="this.modalController.dismiss()">
-      <ion-icon name="chevron-back-outline"></ion-icon>
-    </ion-button>
-    <ion-title>Diagnostico {{this.pacientInfo.numeracion}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <!--elementos de la vista-->
 <ion-content [fullscreen]="true">
 
+  <!--Header-->
+  <header style="display: flex; text-align: center;">
+    <ion-button fill="clear" (click)="this.modalController.dismiss()">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <h2 style="margin-left: 50px;">Diagnostico {{ this.pacientInfo.numeracion }}</h2>
+  </header>
+
   <!--Los contenedores-->
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="12">
-        <div class="card">
-          <h2>Retinopatía</h2>
-          <p>Resultados</p>
-          <div class="pulse"></div>
-          <div class="chart-area"></div>
-        </div>  
-      </ion-col>
-      <ion-col size="12">    
-        <ion-card color="secondary">
-          <ion-card-header>
-            <ion-card-title>Resultado</ion-card-title>
-            <ion-card-subtitle>Leve</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-        <ion-card color="tertiary">
-          <ion-card-header>
-            <ion-card-title>Resultado</ion-card-title>
-            <ion-card-subtitle>Moderado</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-        <ion-card color="success">
-          <ion-card-header>
-            <ion-card-title>Resultado</ion-card-title>
-            <ion-card-subtitle>NO_DR</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-        <ion-card color="warning">
-          <ion-card-header>
-            <ion-card-title>Resultado</ion-card-title>
-            <ion-card-subtitle>Proliferado</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-        <ion-card color="danger">
-          <ion-card-header>
-            <ion-card-title>Resultado</ion-card-title>
-            <ion-card-subtitle>Severo</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content style="color: #ffffff;">
-            
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="contenedor">
+    <div class="contendor grafica">
+      <div class="chart-area"></div>
+    </div>
+    <div class="contenedor img">
+      <img style="width: 100px; height: 100px;" src="../../../../assets/Images/fondoParaCard.jpg" class="image">
+    </div>
+    <div class="contenedor textChat">
+      <p>{{ this.pacientInfo.enfermedad }}
+      </p>
+    </div>
+    <ng-container *ngIf=""></ng-container>
+    <div class="contenedor diagnostico">
+     {{ this.pacientInfo.descripcion }}
+    </div>
+  </div>
 
   <!--Boton Editar-->
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab slot="fixed" vertical="top" horizontal="center">
     <ion-fab-button id="open-modal" expand="block"> <!--(click)="togglePanel()"-->
       <ion-icon name="pencil-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <!--Agregar Diagnostico-->
-  <ion-content class="ion-padding">
-    <ion-modal tringger="open-modal" (willDismiss)="onWillDismiss($event)">
-      <ng-template>
-        <!--header-->
-        <ion-header>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button (click)="cancel()">Cancel</ion-button>
-            </ion-buttons>
-            <ion-title>Edit Diagnostic</ion-title>
-            <ion-buttons slot="end">
-              <ion-button
-                (click)="confirm()"
-                [strong]="true" 
-                (click)="presentToast('bottom')">
-                  Confirm
-              </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-
-        <!--Agregar diagnostico-->
-        <app-diagnostic-form></app-diagnostic-form>
-
-      </ng-template>
-    </ion-modal>
-  </ion-content>
 
 </ion-content>

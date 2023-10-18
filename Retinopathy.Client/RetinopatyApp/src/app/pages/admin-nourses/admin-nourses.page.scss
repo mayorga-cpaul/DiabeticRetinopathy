@@ -5,6 +5,27 @@
   
   ion-fab {
     position: absolute;
+    margin-top: 540px;
+    margin-left: 110px;
   }
   
+  .container_Cards{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
   
+  .refresh{
+    background-color: white;
+  }
+  
+  .contenedor_inputs{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 50px;
+  }
