@@ -1,6 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal, ToastController } from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core/components'
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { forkJoin, switchMap } from 'rxjs';
+import { IData } from 'src/app/Interfaces/IData';
+import { DoctorAddFormsComponent } from 'src/app/components/Forms/doctor-add-forms/doctor-add-forms.component';
+import { Doctor } from 'src/app/models/Doctor';
+import { TypeService } from 'src/app/models/enums/TypeService';
+import { DoctorMInimal } from 'src/app/models/results/DoctorMinimal';
+import { UserMinimal } from 'src/app/models/results/UserMininal';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-admin-doctors',
@@ -8,146 +15,48 @@ import { OverlayEventDetail } from '@ionic/core/components'
   styleUrls: ['./admin-doctors.page.scss'],
 })
 export class AdminDoctorsPage implements OnInit {
+  
+  public listDoctors: DoctorMInimal[];
 
-  @ViewChild(IonModal) modal: IonModal;
-  
-  
   //#region variables
-  public userid: string = '';
-  public name: string = '';
-  public lastname: string = '';
-  public phone: string = '';
-  public dni: string = '';
-  public email: string = '';
-  public fecha: string = '';
-  public speciality: string = '';
-  public role: string = '';
-  public state: string = '';
+  // public name: string = '';
+  // public lastname: string = '';
+  // public email: string = '';
+  // public cedula: string = '';
+  // public phone: string = '';
 
+  // // Array de doctores
 
-  public id:string = "present-alert";
-
-  // Array de doctores
-
-  public array_list = [
-    {
-      userid: "S1234",
-      name: "Saul",
-      lastname: "Molina",
-      phone: "88496785",
-      dni: "1547895",
-      email: "saulmolina@gmail.com",
-      fecha: "15-09-23",
-      speciality: "Oftalmologia",
-      role: "Oftalmologo General",
-      state: "Disponible"
-    },
-    {
-      userid: "S1234",
-      name: "Saul",
-      lastname: "Molina",
-      phone: "88496785",
-      dni: "1547895",
-      email: "saulmolina@gmail.com",
-      fecha: "15-09-23",
-      speciality: "Oftalmologia",
-      role: "Oftalmologo General",
-      state: "Disponible"
-    },
-    {
-      userid: "S1234",
-      name: "Saul",
-      lastname: "Molina",
-      phone: "88496785",
-      dni: "1547895",
-      email: "saulmolina@gmail.com",
-      fecha: "15-09-23",
-      speciality: "Oftalmologia",
-      role: "Oftalmologo General",
-      state: "Disponible"
-    },
-    {
-      userid: "S1234",
-      name: "Saul",
-      lastname: "Molina",
-      phone: "88496785",
-      dni: "1547895",
-      email: "saulmolina@gmail.com",
-      fecha: "15-09-23",
-      speciality: "Oftalmologia",
-      role: "Oftalmologo General",
-      state: "Disponible"
-    },
-    {
-      userid: "S1234",
-      name: "Saul",
-      lastname: "Molina",
-      phone: "88496785",
-      dni: "1547895",
-      email: "saulmolina@gmail.com",
-      fecha: "15-09-23",
-      speciality: "Oftalmologia",
-      role: "Oftalmologo General",
-      state: "Disponible"
-    },
-    {
-      userid: "S1234",
-      name: "Saul",
-      lastname: "Molina",
-      phone: "88496785",
-      dni: "1547895",
-      email: "saulmolina@gmail.com",
-      fecha: "15-09-23",
-      speciality: "Oftalmologia",
-      role: "Oftalmologo General",
-      state: "Disponible"
-    },
-  ]
+  // public array_list = [
+  //   {
+  //     userid: "S1234",
+  //     name: "Saul",
+  //     lastname: "Molina",
+  //     email: "saulmolina@gmail.com",
+  //     cedula: "001-231299-1120p",
+  //     phone: "88496785",
+  //   }
+  // ]
   //#endregion
 
-  constructor( private toastController: ToastController) { }
+  constructor(private modalController: ModalController, private userService: UserService) {
+    userService.GetUserBy<IData<Doctor[]>>(TypeService.ROLE, 'Doctor')
+      .pipe(
+        switchMap((results) => {
+          const doctorRequests = results.data.map((doctor) => {
+            return userService.GetUserBy<UserMinimal>(TypeService.ID, doctor.userId);
+          });
+
+          return forkJoin(doctorRequests);
+        })
+      )
+      .subscribe((detailedDoctors) => {
+        this.listDoctors = detailedDoctors;
+      });
+  }
 
   ngOnInit() {
   }
-  
-  async AgregarDoctor(){
-    // let doctor: Doctor;
-    let userid = this.userid;
-    let name = this.name;
-    let lastname = this.lastname;
-    let phone = this.phone;
-    let dni = this.dni;
-    let email = this.email;
-    let fecha = this.fecha;
-    let speciality = this.speciality;
-    let role = this.role;
-    let state = this.state;
-  
-    try {
-      this.array_list.push(
-        {
-          userid,
-          name, 
-          lastname, 
-          phone, 
-          dni, 
-          email, 
-          fecha,
-          speciality, 
-          role, 
-          state
-        })
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  EditarDoctor(){
-
-  }
-  EliminarDoctor(){
-    
-  }
-
 
 //#region Apartado que no maneja datos
   setResult(ev) {
@@ -170,30 +79,14 @@ export class AdminDoctorsPage implements OnInit {
       },
     },
   ];
-   // Para confirmar
-   async presentToast(position: 'top' | 'middle' | 'bottom') {
-    const toast = await this.toastController.create({
-      message: 'Completed',
-      duration: 1500,
-      position: position,
-    });
-
-    await toast.present();
-  }
-  // modal para agregar empleado
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
-  }
-
-  confirm() {
-    this.modal.dismiss(this.name, 'confirm');
-  }
-
-  onWillDismiss(event: Event) {
-    const eve = event as CustomEvent<OverlayEventDetail<string>>;
-    if (eve.detail.role === 'confirm') {
-    }
-  }
+  
 //#endregion
+
+  async AbrirModal(){
+    const modal = await this.modalController.create({
+      component: DoctorAddFormsComponent
+    });
+    await modal.present();
+  }
 
 }

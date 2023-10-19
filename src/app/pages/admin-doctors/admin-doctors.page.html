@@ -10,13 +10,12 @@
 <ion-content [fullscreen]="true">
 
   <ng-container class="contenedor ion">
-    <ng-container class="contenedor">
+    <div class="contenedor">
       
       <!--Mostrar cards de cada doctor-->
       <ion-grid fixed>
         <ion-row class="ion-justify-content-center ion-align-items-center">
-          <ion-col size="12" sizeMd="5" *ngFor="let p of array_list; let i = index">
-            <div class="container_Cards">
+          <ion-col size="12" sizeMd="5" *ngFor="let p of listDoctors; let i = index">
               <app-card-doctor
                 idalert = "present-alert"
                 urlImg="../../../assets/Images/fondoParaCard.jpg"
@@ -28,9 +27,7 @@
                 phone = {{p.phone}}
                 dni = {{p.dni}}
                 fecha = {{p.fecha}}
-              >
-              </app-card-doctor>
-            </div>
+              ></app-card-doctor>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -42,43 +39,14 @@
         [buttons]="alertButtons"
         (didDismiss)="setResult($event)"
       ></ion-alert>
-    </ng-container>
+    </div>
   </ng-container>
 
   <!--Boton + para agregar-->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button id="open-modal" expand="block">
+    <ion-fab-button (click)="AbrirModal()" id="open-modal" expand="block">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <!--Agregar doctores-->
-  <ion-content class="ion-padding">
-        <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
-          <ng-template>
-            <ion-header>
-              <ion-toolbar>
-                <ion-buttons slot="start">
-                  <ion-button (click)="cancel()">Cancel</ion-button>
-                </ion-buttons>
-                <ion-title>Add a new doctor</ion-title>
-                <ion-buttons slot="end">
-                  <ion-button 
-                    (click)="AgregarDoctor()"
-                    (click)="confirm()"
-                    [strong]="true" 
-                    (click)="presentToast('bottom')">
-                      Confirm
-                  </ion-button>
-                </ion-buttons>
-              </ion-toolbar>
-            </ion-header>
-    
-            <!--Form add doctors-->
-            <app-doctor-add-forms></app-doctor-add-forms>
-            
-          </ng-template>
-        </ion-modal>
-  </ion-content>
 
 </ion-content>

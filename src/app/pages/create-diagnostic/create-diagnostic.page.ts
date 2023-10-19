@@ -11,13 +11,11 @@ import { DiagnosticService } from 'src/app/services/diagnostic.service';
 import { Diagnostic } from 'src/app/models/Diagnostic';
 import { PredictionResult } from 'src/app/models/results/PredictionResult';
 import { LocalStorageRepository } from 'src/app/repository/LocalStorageRepository';
-import { MetadataUser } from 'src/app/models/auth/MetadataUser';
 import { DoctorMInimal } from 'src/app/models/results/DoctorMinimal';
 import { UserService } from 'src/app/services/user.service';
 import { TypeService } from 'src/app/models/enums/TypeService';
 import { UserMinimal } from 'src/app/models/results/UserMininal';
 import { Observable, map } from 'rxjs';
-import { DiagnosticPacientExist } from 'src/app/models/DiagnosticPacientExist';
 @Component({
   selector: 'app-home',
   templateUrl: 'create-diagnostic.page.html',

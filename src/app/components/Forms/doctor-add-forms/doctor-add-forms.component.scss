@@ -14,3 +14,13 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
+
+  ion-toolbar {
+    --background:#5c6c84 ;
+    ion-title{
+      color:white;
+    }
+    ion-icon{
+      color: white;
+    }
+  }

@@ -6,8 +6,6 @@ import { Doctor } from 'src/app/models/Doctor';
 import { TypeService } from 'src/app/models/enums/TypeService';
 import { DoctorMInimal } from 'src/app/models/results/DoctorMinimal';
 import { UserMinimal } from 'src/app/models/results/UserMininal';
-import { DoctorService } from 'src/app/services/Doctor.Service';
-import { DoctorListService } from 'src/app/services/doctorList.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -37,11 +35,9 @@ export class DoctorListComponent implements OnInit {
 
   ngOnInit() {
   }
-
   dimiss() {
     this.modalController.dismiss();
   }
-
   public assing(doctor: DoctorMInimal) {
     this.modalController.dismiss(doctor);
   }
