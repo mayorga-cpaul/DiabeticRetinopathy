@@ -60,7 +60,12 @@ const routes: Routes = [
     canLoad:[RoleGuard],
     canActivate:[RoleGuard],
     loadChildren: () => import('./pages/doctor-pages/doctot-view-diagnostico/doctot-view-historial-diagnostico.module').then( m => m.DoctotViewHistorialDiagnosticoPageModule )
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
+
   
 ];
 

@@ -4,3 +4,10 @@ export class UserMinimal{
     email: string;
     phone: string;
 }
+
+export class UserbyDoctor{
+    userId: number
+    userName: string
+    phone: string
+    cedula: string
+}

@@ -13,16 +13,9 @@ import { ManagementService } from 'src/app/services/management.service';
 })
 export class DoctorAddFormsComponent  implements OnInit {
 
-  public name: string = '';
-  public lastname: string = '';
-  public email: string = '';
-  public cedula: string = '';
-  public phone: string = '';
-
+  
   public formuser: FormGroup;
  
-  Role: Role = { roleName: ''};
-  UserClaim: UserClaim = { claimType: '', claimValue : ''};
 
   constructor( 
     private toastController: ToastController, 
@@ -73,13 +66,13 @@ export class DoctorAddFormsComponent  implements OnInit {
       cedula: this.formuser.get('dni')?.value,
       phone: this.formuser.get('phone')?.value,
       password: 'pepito2345',
-      roles:{
-        roleName: 'Paciente'
-      },
-      userClaims: {
+      roles:[{
+        roleName: 'Doctor'
+      }],
+      userClaims:[{
         claimType: 'Name',
-        claimValue: 'Paciente'
-      }
+        claimValue: 'Doctor'
+      }]
     }
    
 

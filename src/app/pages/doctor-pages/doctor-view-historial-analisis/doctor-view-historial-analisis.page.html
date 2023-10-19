@@ -12,15 +12,15 @@
   <!--Cards de analisis-->
   <ion-grid fixed>
     <ion-row>
-      <ion-col size="12" size-sm="6" *ngFor="let result of results" class="contenedor">
+      <ion-col size="12" size-sm="6" *ngFor="let result of listPatientsDiagnostic; let id = index" class="contenedor">
         <div class="notification">
           <div class="notiglow"></div>
           <div class="notiborderglow"></div>
-          <div class="notititle">{{result.enfermedad}}</div>
+          <div class="notititle">{{result.userName}}</div>
           <div class="notibody">
-            {{result.descripcion}}
+            {{result.email}}
             <div class="numeracion_diagnostico">
-              diagnostico #{{result.numeracion}}
+              {{result.createdDate}}
             </div>
             <ion-button style="color: white;" fill="clear" (click)="viewDiagnosic(result)">Leer mas</ion-button>
           </div>

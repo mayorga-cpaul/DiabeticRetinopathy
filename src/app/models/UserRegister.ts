@@ -1,11 +1,11 @@
 export class UserRegister {
-  userName: string = '';
+  userName: string = "";
   email: string = "";
   cedula: string = "";
   password: string = "";
   phone: string = "";
-  roles: Role;
-  userClaims: UserClaim
+  roles: Role[];
+  userClaims: UserClaim[]
 }
 
 export interface Role {

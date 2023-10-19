@@ -1,15 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Add Doctor</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="AddUser()" [strong]="true"> Confirm </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="cancel()">Cancel</ion-button>
-      </ion-buttons>
-      <ion-title>Add Doctor</ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="AddUser()" [strong]="true"> Confirm </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
   <form [formGroup]="formuser">
     <div class="contenedor_inputs">
       <!--name-->

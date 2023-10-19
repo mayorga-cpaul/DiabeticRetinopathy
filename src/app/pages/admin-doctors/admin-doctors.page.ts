@@ -18,27 +18,7 @@ export class AdminDoctorsPage implements OnInit {
   
   public listDoctors: DoctorMInimal[];
 
-  //#region variables
-  // public name: string = '';
-  // public lastname: string = '';
-  // public email: string = '';
-  // public cedula: string = '';
-  // public phone: string = '';
-
-  // // Array de doctores
-
-  // public array_list = [
-  //   {
-  //     userid: "S1234",
-  //     name: "Saul",
-  //     lastname: "Molina",
-  //     email: "saulmolina@gmail.com",
-  //     cedula: "001-231299-1120p",
-  //     phone: "88496785",
-  //   }
-  // ]
-  //#endregion
-
+  
   constructor(private modalController: ModalController, private userService: UserService) {
     userService.GetUserBy<IData<Doctor[]>>(TypeService.ROLE, 'Doctor')
       .pipe(
@@ -52,6 +32,8 @@ export class AdminDoctorsPage implements OnInit {
       )
       .subscribe((detailedDoctors) => {
         this.listDoctors = detailedDoctors;
+        console.log(this.listDoctors);
+        
       });
   }
 

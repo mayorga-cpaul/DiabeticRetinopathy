@@ -1,106 +1,48 @@
-<form class="form">
-  <div class="contenedor_inputs">
-    <!--userid-->
-  <ion-item fill="solid" id="userid">
-    <ion-label position="floating">User Id</ion-label>
-    <ion-input
-      class="input_userid"
-      [(ngModel)]="userid"
-      name="userid" 
-      required
-    >
-    </ion-input>
-    <ion-note slot="helper">Enter a userid</ion-note>
-    <ion-note slot="error">Invalid userid</ion-note>
-  </ion-item>
-  <!--name-->
-  <ion-item fill="solid" id="name">
-    <ion-label position="floating">Name</ion-label>
-    <ion-input
-      class="input_name"
-      [(ngModel)]="name"
-      name="name" 
-      required
-    >
-    </ion-input>
-    <ion-note slot="helper">Enter your name</ion-note>
-    <ion-note slot="error">Incorrect</ion-note>
-  </ion-item>
-  <!--lastname-->
-  <ion-item fill="solid" id="lastname">
-    <ion-label position="floating">Lastname</ion-label>
-    <ion-input
-      class="input_lastname"
-      [(ngModel)]="lastname"
-      name="lastname"
-      required
-    >
-    </ion-input>
-    <ion-note slot="helper">Enter your lastname</ion-note>
-    <ion-note slot="error">Incorrect</ion-note>
-  </ion-item><!--phone-->
-  <ion-item fill="solid" id="phone">
-    <ion-label position="floating">Phone</ion-label>
-    <ion-input
-      class="input_phone"
-      [(ngModel)]="phone"
-      name="phone" 
-      required
-    >
-    </ion-input>
-    <ion-note slot="helper">Enter your phone</ion-note>
-    <ion-note slot="error">Incorrect</ion-note>
-  </ion-item>
-  <!--dni-->
-  <ion-item fill="solid" id="dni">
-    <ion-label position="floating">DNI</ion-label>
-    <ion-input
-      class="input_dni"
-      [(ngModel)]="dni"
-      name="dni" 
-      required
-    >
-    </ion-input>
-    <ion-note slot="helper">Enter your dni</ion-note>
-    <ion-note slot="error">Incorrect</ion-note>
-  </ion-item>
-  <!--email-->
-  <ion-item fill="solid" id="email">
-    <ion-label position="floating">Email</ion-label>
-    <ion-input
-      class="input_email"
-      [(ngModel)]="email"
-      name="email" 
-      required
-    >
-    </ion-input>
-    <ion-note slot="helper">Enter your email</ion-note>
-    <ion-note slot="error">Incorrect</ion-note>
-  </ion-item>
-  </div>
-  <!--speciality-->
-  <ion-list>
-    <ion-item id="speciality">
-      <ion-select class="select" [(ngModel)]="speciality" name="speciality" label="Speciality" placeholder="Make a Selection">
-        <ion-select-option>Oftalmología</ion-select-option>
-        <ion-select-option>Optometría</ion-select-option>
-        <ion-select-option>Oftalmología Geriátrica</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <!--role-->
-    <ion-item id="role">
-      <ion-select class="select" [(ngModel)]="role" name="role" label="Role" placeholder="Make a Selection">
-        <ion-select-option>Oftalmólogo General</ion-select-option>
-        <ion-select-option>Cirujano</ion-select-option>
-        <ion-select-option>Retina y Vítreo</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <!--state-->
-    <ion-item id="state">
-      <ion-select class="select" [(ngModel)]="state" name="state" label="State" placeholder="Make a Selection">
-        <ion-select-option>Disponible</ion-select-option>
-        <ion-select-option>No disponible</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-</form>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Add Doctor</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="AddUser()" [strong]="true"> Confirm </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form class="form" [formGroup]="this.formNurse">
+    <div class="contenedor_inputs">
+  
+      <ion-item fill="solid" id="name">
+        <ion-label position="floating">Name</ion-label>
+        <ion-input class="input_name" formControlName="name">
+        </ion-input>
+        <ion-note slot="helper">Enter your name</ion-note>
+        <ion-note slot="error">Incorrect</ion-note>
+      </ion-item>
+      <ion-item fill="solid" id="phone">
+        <ion-label position="floating">Phone</ion-label>
+        <ion-input class="input_phone" formControlName="phone">
+        </ion-input>
+        <ion-note slot="helper">Enter your phone</ion-note>
+        <ion-note slot="error">Incorrect</ion-note>
+      </ion-item>
+      <!--dni-->
+      <ion-item fill="solid" id="dni">
+        <ion-label position="floating">Cedula</ion-label>
+        <ion-input class="input_dni" formControlName="dni">
+        </ion-input>
+        <ion-note slot="helper">Enter your dni</ion-note>
+        <ion-note slot="error">Incorrect</ion-note>
+      </ion-item>
+      <!--email-->
+      <ion-item fill="solid" id="email">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input class="input_email" formControlName="email">
+        </ion-input>
+        <ion-note slot="helper">Enter your email</ion-note>
+        <ion-note slot="error">Incorrect</ion-note>
+      </ion-item>
+    </div>
+  </form>
+</ion-content>

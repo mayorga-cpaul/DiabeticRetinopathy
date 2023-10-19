@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { DoctotViewHistorialDiagnosticoPage } from '../doctot-view-diagnostico/doctot-view-historial-diagnostico.page';
+import { ActivatedRoute } from '@angular/router';
+import { DiagnosticPatient } from 'src/app/models/results/DiagnosticPatient';
 
 @Component({
   selector: 'app-doctor-view-historial-analisis',
@@ -9,50 +11,32 @@ import { DoctotViewHistorialDiagnosticoPage } from '../doctot-view-diagnostico/d
 })
 export class DoctorViewHistorialAnalisisPage implements OnInit {
 
-  constructor(private modalController: ModalController) { }
+  listPatientsDiagnostic: DiagnosticPatient[];
+  constructor(private modalController: ModalController, private router: ActivatedRoute) {
+
+    router.queryParams.subscribe((queryParams) => {
+
+      const data = JSON.parse(queryParams['data']) as DiagnosticPatient[]
+      console.log(data);
+      data.map(x => {
+        const data = Date.parse(x.createdDate);
+        console.log(data);
+        
+      })
+      this.listPatientsDiagnostic = data;
+
+    })
+  }
 
   ngOnInit() {
   }
 
-  public data = [
-    {
-      numeracion: 1,
-      enfermedad: "ta falluco el mae",
-      descripcion: "saber que nota le callo en el ojo y quedo por la verga el brother"
-    },
-    {
-      numeracion: 2,
-      enfermedad: "ta falluco el mae",
-      descripcion: "saber que nota le callo en el ojo y quedo por la verga el brother"
-    },
-    {
-      numeracion: 3,
-      enfermedad: "ta falluco el mae",
-      descripcion: "saber que nota le callo en el ojo y quedo por la verga el brother"
-    },
-    {
-      numeracion: 4,
-      enfermedad: "ta falluco el mae",
-      descripcion: "saber que nota le callo en el ojo y quedo por la verga el brother"
-    },
-    {
-      numeracion: 5,
-      enfermedad: "ta falluco el mae",
-      descripcion: "saber que nota le callo en el ojo y quedo por la verga el brother"
-    },
-    {
-      numeracion: 6,
-      enfermedad: "ta falluco el mae",
-      descripcion: "saber que nota le callo en el ojo y quedo por la verga el brother"
-    },
 
-  ]
-  public results = [...this.data];
 
-  public async viewDiagnosic(pacient: any){
+  public async viewDiagnosic(pacient: any) {
     const modal = await this.modalController.create({
-      component:DoctotViewHistorialDiagnosticoPage,
-      componentProps:{
+      component: DoctotViewHistorialDiagnosticoPage,
+      componentProps: {
         pacientInfo: pacient
       }
 
