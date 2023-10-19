@@ -16,6 +16,9 @@ import { UserService } from 'src/app/services/user.service';
 import { TypeService } from 'src/app/models/enums/TypeService';
 import { UserMinimal } from 'src/app/models/results/UserMininal';
 import { Observable, map } from 'rxjs';
+import { DiagnosticPacientExist } from 'src/app/models/DiagnosticPacientExist';
+import { UserCredentials } from 'src/app/models/UserCredentials';
+import { MessengerService } from 'src/app/services/messenger.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'create-diagnostic.page.html',
