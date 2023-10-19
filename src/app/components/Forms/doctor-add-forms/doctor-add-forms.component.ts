@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-doctor-add-forms',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorAddFormsComponent  implements OnInit {
 
+  public userForm: FormGroup;
   public userid: string = '';
   public name: string = '';
   public lastname: string = '';

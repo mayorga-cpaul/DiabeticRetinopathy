@@ -44,7 +44,7 @@
           <ion-list [inset]="true">
             <ion-item lines="full" fill="solid">
               <ion-label position="floating">Cedula de identidad</ion-label>
-              <ion-input type="text" formControlName="dni" maxlength="15"></ion-input>
+              <ion-input type="text" formControlName="dni" maxlength="17"></ion-input>
               <ion-button (click)="thisPacientExist()" slot="end" fill="clear">
                 <ion-icon name="search-outline"></ion-icon>
               </ion-button>
@@ -69,13 +69,6 @@
                   <ion-label position="floating">Correo electronico</ion-label>
                   <ion-input type="text" counterFormatter="counterFormatter" maxlength="50" minlength="10"
                     formControlName="email"></ion-input>
-                </ion-item>
-              </ion-col>
-              <ion-col size="12">
-                <ion-item fill="solid">
-                  <ion-label position="floating">Nombre de usuario</ion-label>
-                  <ion-input type="text" counterFormatter="counterFormatter" maxlength="50" minlength="3"
-                    formControlName="username"></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col size="12">

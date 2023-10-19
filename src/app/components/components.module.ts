@@ -13,6 +13,7 @@ import { DoctorAddFormsComponent } from './Forms/doctor-add-forms/doctor-add-for
 import { PacientDiagnosticCardComponent } from './cards/pacient-diagnostic-card/pacient-diagnostic-card.component';
 import { DiagnosticFormComponent } from './Forms/diagnostic-form/diagnostic-form.component';
 import { NurseAddFormsComponent } from './Forms/nurse-add-forms/nurse-add-forms.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -33,7 +34,8 @@ import { NurseAddFormsComponent } from './Forms/nurse-add-forms/nurse-add-forms.
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    ReactiveFormsModule
   ],
   exports:[
     HeaderPageComponent,
