@@ -7,6 +7,8 @@ import { InfoPacientComponent } from 'src/app/components/modals/info-pacient/inf
 import { FirebaseService } from 'src/app/services/firebase.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { DiagnosticService } from 'src/app/services/diagnostic.service';
+import { Diagnostic } from 'src/app/models/Diagnostic';
 @Component({
   selector: 'app-home',
   templateUrl: 'create-diagnostic.page.html',
@@ -29,7 +31,8 @@ export class CreateDiagnosticPage implements OnInit {
     private modalController: ModalController,
     private formBuilder: FormBuilder,
     private rtService: RetinopatyService,
-    private frbs: FirebaseService) {
+    private frbs: FirebaseService,
+    private serviceDiagnositc: DiagnosticService) {
 
     this.IsLoadImage = this.formBuilder.group({
       image: [null, Validators.required],
@@ -45,7 +48,7 @@ export class CreateDiagnosticPage implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.serviceDiagnositc.getActiveUser();
   }
   private _processMessage(): void {
     Swal.fire({
@@ -129,6 +132,10 @@ export class CreateDiagnosticPage implements OnInit {
       {
         next: (response) => {
           testResults = response;
+
+          
+          console.log(testResults);
+          
         },
         error: (error) => {
           console.error('Error al enviar el archivo', error);
@@ -137,6 +144,11 @@ export class CreateDiagnosticPage implements OnInit {
         let namePacient = this.FormPacient.get('name').value;
         this.frbs.uploadImage(this.file,namePacient).subscribe({
           next: (url) => {
+
+            const diagnostic: Diagnostic = {
+              imageSource: url,
+
+            }
             console.log('link imagen',url);
             console.log(testResults);
             Swal.close();

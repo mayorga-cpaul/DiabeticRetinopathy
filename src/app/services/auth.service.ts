@@ -106,7 +106,7 @@ export class AuthService {
       if(userData !== undefined && userData.islogin == true){
           return userData;
       }else{
-        return null;
+        return userData;
       }
 
     } catch (error) {
@@ -128,6 +128,7 @@ export class AuthService {
  * @returns 
  */
   private decodeJWT<T>(tokenEncode: string): T {
+    
     return this.jwtHelper.decodeToken<T>(tokenEncode);
   }
 

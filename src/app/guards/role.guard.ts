@@ -8,7 +8,6 @@ export const RoleGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
   const authService = inject(AuthService);
   console.log('en el guard');
   
-  
   const result = authService.IsValid();
 
   if (result?.islogin) {
