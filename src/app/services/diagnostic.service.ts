@@ -35,6 +35,7 @@ export class DiagnosticService {
   }
   public createDiagnostic(diagnostic: Diagnostic){
     const body = JSON.stringify(diagnostic);
-    return this.httpClient.post(`${this.ENDPOINT}api/Retina/patiente`,body,{headers: this.headers});
+    return this.httpClient.post(`${this.ENDPOINT}api/Retina/patient`,body,{headers: this.headers});
   }
+  
 }

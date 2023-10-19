@@ -53,8 +53,29 @@
               <ion-col size="12">
                 <ion-item fill="solid">
                   <ion-label position="floating">Nombre completo</ion-label>
-                  <ion-input type="text" counterFormatter="counterFormatter" maxlength="50" minlength="20"
+                  <ion-input type="text" counterFormatter="counterFormatter" maxlength="50" minlength="10"
                     formControlName="name"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12">
+                <ion-item fill="solid">
+                  <ion-label position="floating">Telefono</ion-label>
+                  <ion-input type="text" counterFormatter="counterFormatter" maxlength="8" minlength="7"
+                    formControlName="phone"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12">
+                <ion-item fill="solid">
+                  <ion-label position="floating">Correo electronico</ion-label>
+                  <ion-input type="text" counterFormatter="counterFormatter" maxlength="50" minlength="10"
+                    formControlName="email"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12">
+                <ion-item fill="solid">
+                  <ion-label position="floating">Nombre de usuario</ion-label>
+                  <ion-input type="text" counterFormatter="counterFormatter" maxlength="50" minlength="3"
+                    formControlName="username"></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col size="12">
@@ -67,8 +88,8 @@
               <ion-card>
                 <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="" />
                 <ion-card-header>
-                  <ion-card-title>001-110603-1028G</ion-card-title>
-                  <ion-card-subtitle>Kevin Jair Ortiz Galeano</ion-card-subtitle>
+                  <ion-card-title>{{ this.FormPacient.get('dni')?.value }}</ion-card-title>
+                  <ion-card-subtitle>{{ this.user.userName }}</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
             </ng-container>
@@ -98,7 +119,7 @@
           <ion-button (click)="addDoctor()">
             <ion-icon name="add"></ion-icon>
           </ion-button>
-          <ion-input type="text" readonly="true" [value]="doctor" placeholder=" Sin asignar"></ion-input>
+          <ion-input type="text" readonly="true" [value]="this.doctor?.userName" placeholder=" Sin asignar"></ion-input>
         </ion-item>
         <ion-card>
           <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="" />

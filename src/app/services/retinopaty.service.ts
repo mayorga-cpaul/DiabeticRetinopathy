@@ -1,28 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { HeaderParam } from '../models/enums/Headers';
+import { PredictionResult } from '../models/results/PredictionResult';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RetinopatyService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) {
-    
-  }
-  public uploadImage(imageFile: File): Observable<any> {
-    
+  public uploadImage(imageFile: File): Observable<PredictionResult> {
     const formData = new FormData();
     formData.append('file', imageFile, imageFile.name);
-
-    const headers = new HttpHeaders({
-      [HeaderParam.Accept]: '*/*',
-      [HeaderParam.ContentType]: 'multipart/form-data'
-    }); 
-
-    return this.httpClient.post<{}>(`${environment.ENDPOINT_BASE}`, formData, { headers });
+    return this.httpClient.post<PredictionResult>('http://127.0.0.1:8000/process_image/', formData);
   }
- 
 }

@@ -19,11 +19,9 @@ export class Diagnostic {
 
 export interface Role {
     roleName: string
-  }
-  
-  export interface UserClaim {
-    userClaimId: number
-    userId: number
+}
+
+export interface UserClaim {
     claimType: string
     claimValue: string
-  }
+}
