@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RetinopatyService } from 'src/app/services/retinopaty.service';
@@ -51,11 +51,10 @@ export class CreateDiagnosticPage implements OnInit {
     });
 
     this.FormPacient = this.formBuilder.group({
-      dni: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(15)]],
+      dni: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(17)]],
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       phone: ['', [Validators.required]],
-      username: ['', [Validators.required]]
     });
 
     console.log('Estado', this.FormPacient.valid);
@@ -106,18 +105,21 @@ export class CreateDiagnosticPage implements OnInit {
     let diagnostic: Diagnostic = new Diagnostic();
 
     if (this.FormPacient.get('dni').valid == true) {
-      this.GetPacient(this.FormPacient.get('dni').value).subscribe(result => {
-        if (result != null) {
-          this.PacientExist = true;
-          this.ViewInfo = true;
-          this.showAlert('El paciente ya existe');
-          this.user = result;
-
-        } else {
+      this.GetPacient(this.FormPacient.get('dni').value).subscribe({
+        next: (result) => {
+          if (result != null || result != undefined) {
+            this.PacientExist = true;
+            this.ViewInfo = true;
+            this.showAlert('El paciente ya existe');
+            this.user = result;
+  
+          }
+        },
+        error: (err) => {
           this.showAlert('El paciente no existe');
           this.PacientExist = false;
           this.ViewInfo = false;
-        }
+        },
       })
     } else {
       this.showAlert('El numero de cedula no esta completo');
@@ -152,61 +154,109 @@ export class CreateDiagnosticPage implements OnInit {
 
   public async processData() {
     let diagnostic: Diagnostic = new Diagnostic();
+    let diagnosticUserExist: DiagnosticPacientExist = new DiagnosticPacientExist();
     this._processMessage();
+
     this.rtService.uploadImage(this.file).subscribe(
       {
         next: (response: PredictionResult) => {
-          diagnostic.proliferative = response.result.proliferative;
-          diagnostic.moderate = response.result.moderate;
-          diagnostic.severe = response.result.sever;
-          diagnostic.noDiabeticRetinopathy = response.result.no_dir;
-          diagnostic.mild = response.result.mild;
-          diagnostic.aiAnalysis = 'podrido';
-          diagnostic.roles = [];
-          diagnostic.roles.push({ roleName: 'Paciente' });
-          diagnostic.userClaims = [];
-          diagnostic.userClaims?.push({ claimType: 'Paciente', claimValue: 'Paciente' });
-          diagnostic.doctorId = this.doctor.userId;
-          diagnostic.nurseId = 13;
-          console.log(diagnostic);
+
+          if (this.user?.userId !== undefined && this.user.userId !== 0) {
+            diagnosticUserExist.nurseId = 13;
+            diagnosticUserExist.patientId = this.user.userId;
+            diagnosticUserExist.doctorId = this.doctor?.userId;
+            diagnosticUserExist.mild = response.result.mild;
+            diagnosticUserExist.noDiabeticRetinopathy = response.result.no_dir
+            diagnosticUserExist.severe = response.result.sever;
+            diagnosticUserExist.moderate = response.result.moderate;
+            diagnosticUserExist.proliferative = response.result.proliferative;
+            diagnosticUserExist.aiAnalysis = 'podrido';
+
+            this.frbs.uploadImage(this.file, this.user?.userName).subscribe({
+              next: (value) => {
+                diagnosticUserExist.imageSource = value
+                console.log(diagnosticUserExist);
+                
+                this.serviceDiagnositc.createDiagnostic<DiagnosticPacientExist>(diagnosticUserExist,true).subscribe(() => {
+                  Swal.close();
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Informacion subida correctamente',
+                    heightAuto: false,
+                    showConfirmButton: true
+                  }).then((response) => {
+                    if (response.isConfirmed) {
+                      this.returnDashboad();
+                    }
+                  });
+                });
+              },
+            })
+
+          } else {
+            diagnostic.proliferative = response.result.proliferative;
+            diagnostic.moderate = response.result.moderate;
+            diagnostic.severe = response.result.sever;
+            diagnostic.noDiabeticRetinopathy = response.result.no_dir;
+            diagnostic.mild = response.result.mild;
+            diagnostic.aiAnalysis = 'podrido';
+            diagnostic.roles = [];
+            diagnostic.roles.push({ roleName: 'Paciente' });
+            diagnostic.userClaims = [];
+            diagnostic.userClaims?.push({ claimType: 'Paciente', claimValue: 'Paciente' });
+            diagnostic.doctorId = this.doctor.userId;
+            diagnostic.nurseId = 13;
+            console.log(diagnostic);
+
+            let namePacient = this.FormPacient.get('name').value;
+            this.frbs.uploadImage(this.file, namePacient).subscribe({
+              next: (url: string) => {
+                diagnostic.imageSource = url;
+                diagnostic.userName = this.FormPacient.get('name').value;
+                diagnostic.cedula = this.FormPacient.get('dni').value;
+                diagnostic.email = this.FormPacient.get('email').value;
+                diagnostic.password = '12355';
+                diagnostic.phone = this.FormPacient.get('phone').value;
+                console.log(diagnostic);
+
+
+                this.serviceDiagnositc.createDiagnostic<Diagnostic>(diagnostic, false).subscribe(() => {
+                  Swal.close();
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Informacion subida correctamente',
+                    heightAuto: false,
+                    showConfirmButton: true
+                  }).then((response) => {
+                    if (response.isConfirmed) {
+                      const messageService: MessengerService = inject(MessengerService);
+                      const UserCredentials: UserCredentials = {
+                        email: diagnostic.email,
+                        password: diagnostic.password,
+                        username: diagnostic.userName,
+                      }
+                      messageService.sendMessage(diagnostic.phone,UserCredentials).subscribe(r => {
+                        console.log(r);
+                        this.returnDashboad();
+                      })
+
+                     
+                    }
+                  });
+                });
+              },
+            })
+
+          }
+
+
 
         },
         error: (error) => {
           console.error('Error al enviar el archivo', error);
         },
         complete: () => {
-          let namePacient = this.FormPacient.get('name').value;
-          this.frbs.uploadImage(this.file, namePacient).subscribe({
-            next: (url: string) => {
-              diagnostic.imageSource = url;
-              diagnostic.userName = this.FormPacient.get('username').value;
-              diagnostic.cedula = this.FormPacient.get('dni').value;
-              diagnostic.email = this.FormPacient.get('email').value;
-              diagnostic.password = '12355';
-              diagnostic.phone = this.FormPacient.get('phone').value;
-              console.log(diagnostic);
 
-
-              this.serviceDiagnositc.createDiagnostic(diagnostic).subscribe(() => {
-                Swal.close();
-                Swal.fire({
-                  icon: 'success',
-                  title: 'Informacion subida correctamente',
-                  heightAuto: false,
-                  showConfirmButton: true
-                }).then((response) => {
-                  if (response.isConfirmed) {
-                    this.returnDashboad();
-                  }
-                });
-              });
-
-            },
-            error(err) {
-              console.log(err);
-            },
-
-          })
         }
       });
   }
@@ -229,22 +279,7 @@ export class CreateDiagnosticPage implements OnInit {
     this.router.navigate(['dashboard'], { replaceUrl: true })
   }
 
-  public submit(){
-    if(this.user.userId != 0){
-     
-      // this.serviceDiagnositc.createDiagnostic(diagnostic).subscribe(() => {
-      //   Swal.close();
-      //   Swal.fire({
-      //     icon: 'success',
-      //     title: 'Informacion subida correctamente',
-      //     heightAuto: false,
-      //     showConfirmButton: true
-      //   }).then((response) => {
-      //     if (response.isConfirmed) {
-      //       this.returnDashboad();
-      //     }
-      //   });
-      // });
-    }
+  public setDiagnostic(){
+
   }
 }
