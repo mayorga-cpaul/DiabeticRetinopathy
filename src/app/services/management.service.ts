@@ -38,4 +38,7 @@ export class ManagementService {
     return this.httpClient.get<DiagnosticPatient[]>(`https://eyescare.azurewebsites.net/api/Retina/history?patientId=${userId}&doctorId=${doctorid}`, { headers: this.header })
   }
 
+  public getResults(userId: number){
+    return this.httpClient.get(`'https://eyescare.azurewebsites.net/api/Retina/retinopathy-results-by-id?patientId=${userId}'`)
+  }
 }

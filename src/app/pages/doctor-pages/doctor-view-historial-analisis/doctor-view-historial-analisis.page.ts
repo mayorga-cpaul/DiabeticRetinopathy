@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { DoctotViewHistorialDiagnosticoPage } from '../doctot-view-diagnostico/doctot-view-historial-diagnostico.page';
 import { ActivatedRoute } from '@angular/router';
 import { DiagnosticPatient } from 'src/app/models/results/DiagnosticPatient';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 @Component({
   selector: 'app-doctor-view-historial-analisis',
@@ -15,16 +17,8 @@ export class DoctorViewHistorialAnalisisPage implements OnInit {
   constructor(private modalController: ModalController, private router: ActivatedRoute) {
 
     router.queryParams.subscribe((queryParams) => {
-
       const data = JSON.parse(queryParams['data']) as DiagnosticPatient[]
-      console.log(data);
-      data.map(x => {
-        const data = Date.parse(x.createdDate);
-        console.log(data);
-        
-      })
       this.listPatientsDiagnostic = data;
-
     })
   }
 
@@ -44,4 +38,15 @@ export class DoctorViewHistorialAnalisisPage implements OnInit {
     await modal.present();
   }
 
+  public formatDate(date: string) {
+    const originalDate = new Date(date);
+    const day = originalDate.getDate().toString().padStart(2, '0');
+    const month = (originalDate.getMonth() + 1).toString().padStart(2, '0');
+    const year = originalDate.getFullYear();
+    const dayName = format(originalDate, 'EEEE', { locale: es });
+    const monthName = format(originalDate, 'MMMM', { locale: es });
+    const formattedDate = `${dayName} ${day} de ${monthName} ${year}`;
+   return formattedDate;
+
+  }
 }

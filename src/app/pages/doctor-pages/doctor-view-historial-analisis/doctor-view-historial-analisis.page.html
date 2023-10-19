@@ -20,7 +20,7 @@
           <div class="notibody">
             {{result.email}}
             <div class="numeracion_diagnostico">
-              {{result.createdDate}}
+              {{formatDate(result.createdDate)}}
             </div>
             <ion-button style="color: white;" fill="clear" (click)="viewDiagnosic(result)">Leer mas</ion-button>
           </div>

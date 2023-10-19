@@ -1,6 +1,6 @@
 export enum RoleUser {
     IsAdmin = 'Admin',
     IsPatient = 'Paciente',
-    IsNurse = 'Enfermera',
+    IsNurse = 'Enfermero',
     IsDoctor = 'Doctor'
 }

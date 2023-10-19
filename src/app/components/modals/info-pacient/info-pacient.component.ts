@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { } from 'apexcharts'
+import { ResultRetinopaty } from 'src/app/models/results/ResultRetinopaty';
 @Component({
   selector: 'app-info-pacient',
   templateUrl: './info-pacient.component.html',
@@ -11,6 +12,7 @@ export class InfoPacientComponent  implements AfterViewInit, OnInit {
 
   public chartOptions = {};
 
+  public infoRetino: ResultRetinopaty;
   @Input() pacientObject: any = null;
   constructor(
     private modalController: ModalController,

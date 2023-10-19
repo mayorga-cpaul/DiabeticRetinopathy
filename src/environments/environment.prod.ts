@@ -11,5 +11,6 @@ export const environment = {
   production: true,
   ENDPOINT_BASE:'http://127.0.0.1:8000/process_image/',
   ENDPOIN_BASE_EYESCARE: 'https://eyescare.azurewebsites.net/',
-  TOKEN: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJBZG1pbiI6IkFkbWluIiwiVXNlcnMiOiJBdXRoQ29udHJvbGxlciIsIm5iZiI6MTY5NzY4NTA3NSwiZXhwIjoxNjk3NzcxNDc1LCJpYXQiOjE2OTc2ODUwNzUsImlzcyI6IkV5ZXNDYXJlQmFja2VuZCJ9.RT4z4Y5rXLVRdqITt86JBbkgyy17JO6E_nkPiIim5zve2Bg5TMX_zbtaYz2ZRvtXLGobe3ajxLXnyzNoHTgilw'
+  TOKEN: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJBZG1pbiI6IkFkbWluIiwiVXNlcnMiOiJBdXRoQ29udHJvbGxlciIsIm5iZiI6MTY5NzY4NTA3NSwiZXhwIjoxNjk3NzcxNDc1LCJpYXQiOjE2OTc2ODUwNzUsImlzcyI6IkV5ZXNDYXJlQmFja2VuZCJ9.RT4z4Y5rXLVRdqITt86JBbkgyy17JO6E_nkPiIim5zve2Bg5TMX_zbtaYz2ZRvtXLGobe3ajxLXnyzNoHTgilw',
+  KEY_API : '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'
 };

@@ -11,13 +11,13 @@
   <ion-grid fixed>
     <ion-title class="ion-padding-top ion-padding-bottom">Accesos directos</ion-title>
     <ion-row>
-      <ion-col *ngIf="this.roleUser === 'Enfermera'" size="6" size-sm="6" size-md="6" size-lg="3">
+      <ion-col *ngIf="this.roleUser === 'Enfermero'" size="6" size-sm="6" size-md="6" size-lg="3">
         <app-card-access titleCard="Nuevo Análisis" srcImg="../../../assets/icon/agregar-archivo.png"
           (click)="onClick('create-analisis')">
         </app-card-access>
       </ion-col>
 
-      <ion-col *ngIf="this.roleUser === 'Enfermera'" size="6" size-sm="6" size-md="6" size-lg="3">
+      <ion-col *ngIf="this.roleUser === 'Enfermero'" size="6" size-sm="6" size-md="6" size-lg="3">
         <app-card-access titleCard="Historial medico" srcImg="../../../assets/icon/statistical-analysis.png"
         (click)="onClick('history-dignostic')">
       </app-card-access>

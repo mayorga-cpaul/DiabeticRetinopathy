@@ -10,13 +10,13 @@
           <ion-label>Inicio</ion-label>
         </ion-item>
 
-        <ion-item *ngIf="this.roleUser === 'Enfermera' || this.roleUser === 'Doctor' || this.roleUser === 'Admin'"
+        <ion-item *ngIf="this.roleUser === 'Enfermero' || this.roleUser === 'Doctor' || this.roleUser === 'Admin'"
           routerDirection="root" [routerLink]="'app/profile'" lines="none" routerLinkActive="selected">
           <ion-icon aria-hidden="true" slot="start" name="person"></ion-icon>
           <ion-label>Perfil</ion-label>
         </ion-item>
 
-        <ion-item *ngIf="this.roleUser === 'Enfermera'" routerDirection="root" [routerLink]="'history-dignostic'"
+        <ion-item *ngIf="this.roleUser === 'Enfermero'" routerDirection="root" [routerLink]="'history-dignostic'"
           lines="none" routerLinkActive="selected">
           <ion-icon aria-hidden="true" slot="start" name="receipt"></ion-icon>
           <ion-label>Pacientes</ion-label>
